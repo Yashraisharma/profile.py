@@ -25,16 +25,11 @@
 
         /* LIVE CANVAS BACKGROUND */
         #fluid-canvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            z-index: -2;
-            pointer-events: none;
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+            z-index: -2; pointer-events: none;
         }
 
-        /* 2. The Gatekeeper (Required to start Audio) */
+        /* The Gatekeeper */
         #entry-gate {
             position: fixed; inset: 0; background: #000; z-index: 9999;
             display: flex; align-items: center; justify-content: center;
@@ -50,15 +45,13 @@
 
         @keyframes breathe { 0%, 100% { opacity: 0.3; transform: scale(0.98); } 50% { opacity: 1; transform: scale(1.02); } }
 
-        /* 3. Main Content */
+        /* Main Content */
         #main-content {
-            display: none; opacity: 0; transition: opacity 2s ease;
-            perspective: 1200px; /* Enhanced 3D space */
+            display: none; opacity: 0; transition: opacity 2s ease; perspective: 1200px;
         }
 
         .hero { height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 0 20px; z-index: 10; }
 
-        /* Liquid Gold Text Effect */
         .liquid-gold-text {
             font-family: 'Cinzel', serif; font-size: clamp(3rem, 8vw, 6.5rem); font-weight: 700;
             background: linear-gradient(45deg, var(--gold-dark), #fff, var(--gold-mid), var(--gold-light));
@@ -75,29 +68,20 @@
         .scroll-container { max-width: 900px; margin: 0 auto; padding: 50px 20px 150px 20px; }
 
         .crevice-card {
-            background: rgba(10, 10, 10, 0.4); 
-            backdrop-filter: blur(20px); /* Heavy glassmorphism */
-            border: 1px solid rgba(191, 149, 63, 0.3); 
-            border-left: 5px solid var(--gold-mid);
+            background: rgba(10, 10, 10, 0.4); backdrop-filter: blur(20px); 
+            border: 1px solid rgba(191, 149, 63, 0.3); border-left: 5px solid var(--gold-mid);
             padding: 50px; margin-bottom: 100px; border-radius: 8px; 
             box-shadow: 0 30px 60px rgba(0,0,0,0.8), inset 0 0 20px rgba(191, 149, 63, 0.05);
-            
-            /* Aggressive 3D Starting State */
-            opacity: 0; 
-            transform: translateY(150px) rotateX(25deg) scale(0.9);
+            opacity: 0; transform: translateY(150px) rotateX(25deg) scale(0.9);
             transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), opacity 1.2s ease, box-shadow 0.4s ease, border-color 0.4s ease;
             transform-style: preserve-3d;
         }
 
-        /* Triggered by JS */
         .crevice-card.active { opacity: 1; transform: translateY(0) rotateX(0deg) scale(1); }
 
-        /* Hover Physics */
         .crevice-card:hover {
-            transform: translateY(-10px) scale(1.03) rotateY(2deg); 
-            border-color: var(--gold-light);
-            box-shadow: 0 40px 80px rgba(191, 149, 63, 0.2), inset 0 0 30px rgba(191, 149, 63, 0.1); 
-            z-index: 10;
+            transform: translateY(-10px) scale(1.03) rotateY(2deg); border-color: var(--gold-light);
+            box-shadow: 0 40px 80px rgba(191, 149, 63, 0.2), inset 0 0 30px rgba(191, 149, 63, 0.1); z-index: 10;
         }
 
         .section-title {
@@ -108,20 +92,16 @@
 
         .highlight-gold { color: var(--gold-mid); font-weight: 700; }
         p { line-height: 1.9; color: #e0e0e0; margin-bottom: 20px; font-size: 1.1rem; }
-
     </style>
 </head>
 <body>
 
-    <!-- REAL-TIME FLUID ENGINE -->
     <canvas id="fluid-canvas"></canvas>
 
-    <!-- The Gatekeeper -->
     <div id="entry-gate" onclick="unlockExperience()">
         <div class="gate-text">ENTER THE ABYSS</div>
     </div>
 
-    <!-- Main Content -->
     <div id="main-content">
         <header class="hero">
             <h1 class="liquid-gold-text">YASH RAI SHARMA</h1>
@@ -161,8 +141,8 @@
         </div>
     </div>
 
+    <!-- YouTube Music Injector & Visual Logic -->
     <script>
-        /* --- LIVE GOLDEN WATER CANVAS ENGINE --- */
         const canvas = document.getElementById('fluid-canvas');
         const ctx = canvas.getContext('2d');
         let width, height;
@@ -176,18 +156,15 @@
         resize();
 
         function drawFluid() {
-            // Clear screen with Black Rock color
             ctx.fillStyle = '#050505';
             ctx.fillRect(0, 0, width, height);
             
-            time += 0.005; // Speed of the water flow
+            time += 0.005; 
 
-            // Create multiple overlapping sine waves for a liquid effect
             for (let i = 0; i < 4; i++) {
                 ctx.beginPath();
                 ctx.moveTo(0, height);
                 
-                // Calculate wave math
                 for (let x = 0; x <= width; x += 30) {
                     let y = (height * 0.4) 
                           + Math.sin(x * 0.002 + time + i) * 150 
@@ -198,20 +175,19 @@
                 ctx.lineTo(width, height);
                 ctx.lineTo(0, height);
                 
-                // Apply metallic gold gradient
                 let gradient = ctx.createLinearGradient(0, height/2, width, height);
-                gradient.addColorStop(0, `rgba(179, 135, 40, ${0.15 - i*0.02})`); // Dark Gold
-                gradient.addColorStop(0.5, `rgba(252, 246, 186, ${0.1 - i*0.02})`); // Light Gold
-                gradient.addColorStop(1, `rgba(191, 149, 63, ${0.15 - i*0.02})`); // Mid Gold
+                gradient.addColorStop(0, `rgba(179, 135, 40, ${0.15 - i*0.02})`); 
+                gradient.addColorStop(0.5, `rgba(252, 246, 186, ${0.1 - i*0.02})`); 
+                gradient.addColorStop(1, `rgba(191, 149, 63, ${0.15 - i*0.02})`); 
                 
                 ctx.fillStyle = gradient;
                 ctx.fill();
             }
-            requestAnimationFrame(drawFluid); // Loop at 60fps
+            requestAnimationFrame(drawFluid);
         }
-        drawFluid(); // Start the engine
+        drawFluid(); 
 
-        /* --- AUDIO & ENTRY LOGIC --- */
+        /* --- THE YOUTUBE INJECTOR --- */
         function unlockExperience() {
             const gate = document.getElementById('entry-gate');
             const content = document.getElementById('main-content');
@@ -220,33 +196,27 @@
             setTimeout(() => {
                 gate.style.display = 'none';
                 content.style.display = 'block';
-                // Trigger reflow for animation
                 void content.offsetWidth;
                 content.style.opacity = '1';
             }, 1500);
 
-            // Trigger Ocean Wave Sound
-// Trigger Deep Ocean Wave Sound (Google Premium Library)
-const audio = new Audio('https://actions.google.com/sounds/v1/water/ocean_waves_crashing.ogg');
-audio.loop = true;
-audio.volume = 0.4; 
-audio.play().catch(e => console.error("Audio blocked by browser:", e));
+            // Injects your YouTube video dynamically so it bypasses autoplay blockers
+            const iframe = document.createElement('iframe');
+            iframe.style.display = 'none';
+            iframe.src = "https://www.youtube.com/embed/glhfnCIGfj0?autoplay=1&loop=1&playlist=glhfnCIGfj0";
+            iframe.allow = "autoplay";
+            document.body.appendChild(iframe);
         }
 
-        /* --- AGGRESSIVE 3D SCROLL PHYSICS --- */
         document.addEventListener("DOMContentLoaded", () => {
             const cards = document.querySelectorAll('.crevice-card');
-            
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('active');
                     }
                 });
-            }, { 
-                threshold: 0.1, // Triggers earlier so you see it slide in
-                rootMargin: "0px 0px -50px 0px" // Adds a delay offset
-            });
+            }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
 
             cards.forEach(card => observer.observe(card));
         });
