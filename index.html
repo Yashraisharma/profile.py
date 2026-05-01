@@ -4,18 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Yash Rai Sharma | Project Abyss</title>
-    
-    <!-- React & Babel Engines -->
-    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Cinzel:wght@700&display=swap');
-        :root { --terminal-green: #00ff41; --dark-bg: #050505; }
-        body, html { margin: 0; padding: 0; background: var(--dark-bg); color: var(--terminal-green); font-family: 'Space Mono', monospace; overflow-x: hidden; }
         
-        /* CRT Effect Overlay */
+        :root { --green: #00ff41; --bg: #050505; }
+        
+        body, html { 
+            margin: 0; padding: 0; background: var(--bg); 
+            color: var(--green); font-family: 'Space Mono', monospace; 
+            overflow-x: hidden; height: 100%;
+        }
+
+        /* CRT Scanline Effect */
         body::before {
             content: " "; display: block; position: fixed; inset: 0;
             background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), 
@@ -23,90 +23,82 @@
             z-index: 2001; background-size: 100% 4px, 3px 100%; pointer-events: none;
         }
 
-        .countdown-section { height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
-        .timer-digits { font-size: clamp(2rem, 12vw, 8rem); font-weight: 700; text-shadow: 0 0 20px var(--terminal-green); }
-        .timer-label { font-family: 'Cinzel', serif; font-size: 0.8rem; letter-spacing: 5px; opacity: 0.6; }
+        /* Entry Gate */
+        #gate {
+            position: fixed; inset: 0; background: #000; z-index: 3000;
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer; text-align: center;
+        }
 
-        .crevice { max-width: 800px; margin: 50px auto; padding: 40px; border: 1px solid var(--terminal-green); background: rgba(0, 255, 65, 0.03); }
-        .label { border-bottom: 1px solid var(--terminal-green); margin-bottom: 20px; font-weight: 700; letter-spacing: 2px; display: inline-block; }
+        .pulse { animation: pulse 2s infinite; letter-spacing: 8px; }
+        @keyframes pulse { 0%, 100% { opacity: 0.3; } 50% { opacity: 1; } }
+
+        /* Main Content (Hidden Initially) */
+        #content { display: none; padding: 20px; opacity: 0; transition: opacity 2s ease; }
+
+        .countdown { height: 80vh; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+        .timer { font-size: clamp(2rem, 10vw, 7rem); font-weight: 700; text-shadow: 0 0 15px var(--green); }
         
-        .gate { position: fixed; inset: 0; background: #000; z-index: 3000; display: flex; align-items: center; justify-content: center; cursor: pointer; }
-        @keyframes pulse { 0%, 100% { opacity: 0.4; } 50% { opacity: 1; } }
+        .crevice { 
+            max-width: 800px; margin: 40px auto; padding: 30px; 
+            border: 1px solid var(--green); background: rgba(0, 255, 65, 0.02); 
+        }
+        
+        .label { border-bottom: 1px solid var(--green); margin-bottom: 15px; display: inline-block; font-weight: 700; }
+        h1 { color: #fff; margin-top: 20px; }
     </style>
 </head>
 <body>
-    <div id="root"></div>
 
-    <script type="text/babel">
-        const { useState, useEffect } = React;
+    <div id="gate" onclick="start()">
+        <h2 class="pulse">INITIALIZE DESCEND</h2>
+    </div>
 
-        function Portfolio() {
-            const [entered, setEntered] = useState(false);
-            const [timeLeft, setTimeLeft] = useState({ d: 0, h: 0, m: 0, s: 0 });
+    <div id="content">
+        <div class="countdown">
+            <div id="timer" class="timer">00:00:00:00</div>
+            <div style="font-family: 'Cinzel'; opacity: 0.6; letter-spacing: 5px;">DAYS : HRS : MIN : SEC</div>
+            <h1>YASH RAI SHARMA</h1>
+            <p style="opacity: 0.6;">UPSC 2026 ASPIRANT | TECHNOCRAT</p>
+        </div>
 
-            // Target: May 20, 2026 (UPSC Goal)
-            const targetDate = new Date("May 20, 2026 00:00:00").getTime();
+        <div class="crevice">
+            <div class="label">SUMMARY</div>
+            <p>Technocrat with bases in Software development, Quantum Computing, AR/VR and Cyber Security. Currently focused on finishing the UPSC syllabus by May 2026.</p>
+        </div>
 
-            useEffect(() => {
-                const timer = setInterval(() => {
-                    const now = new Date().getTime();
-                    const distance = targetDate - now;
-                    setTimeLeft({
-                        d: Math.floor(distance / (1000 * 60 * 60 * 24)),
-                        h: Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
-                        m: Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)),
-                        s: Math.floor((distance % (1000 * 60)) / 1000)
-                    });
-                }, 1000);
-                return () => clearInterval(timer);
-            }, []);
+        <div class="crevice">
+            <div class="label">ACTIVE DEPLOYMENT: VECHTECH</div>
+            <p><b>Director | VechTech Consulting | Apr 2023 - Present</b></p>
+            <p>Facilitated development of speech recognition software and business ERP solutions. Managed a freelance team to complete over 6 web development projects.</p>
+        </div>
+    </div>
 
-            const handleEntry = () => {
-                setEntered(true);
-                const audio = new Audio('https://www.soundjay.com/nature/ocean-wave-1.mp3');
-                audio.loop = true;
-                audio.play().catch(e => console.log("Audio block: ", e));
-            };
-
-            return (
-                <div>
-                    {!entered && (
-                        <div className="gate" onClick={handleEntry}>
-                            <h2 style={{letterSpacing: '10px', animation: 'pulse 2s infinite', color: '#00ff41'}}>INITIALIZE DESCEND</h2>
-                        </div>
-                    )}
-
-                    <div style={{ opacity: entered ? 1 : 0, transition: 'opacity 2s ease', padding: '20px' }}>
-                        <section className="countdown-section">
-                            <div className="timer-digits">{timeLeft.d}:{timeLeft.h}:{timeLeft.m}:{timeLeft.s}</div>
-                            <div className="timer-label">DAYS : HOURS : MIN : SEC</div>
-                            <h1 style={{marginTop: '30px', color: '#fff'}}>YASH RAI SHARMA</h1>
-                            <p style={{opacity: 0.6}}>UPSC 2026 ASPIRANT | TECHNOCRAT</p>
-                        </section>
-
-                        <section className="crevice">
-                            <div className="label">SYSTEM SUMMARY</div>
-                            <p>Technocrat with bases in Software development, Quantum Computing, AR/VR and Cyber Security. Currently focused on finishing the UPSC syllabus by May 2026.</p>
-                        </section>
-
-                        <section className="crevice">
-                            <div className="label">ACTIVE DEPLOYMENT: VECHTECH</div>
-                            <p><b>Director | VechTech Consulting | Apr 2023 - Present</b></p>
-                            <p>Facilitated development of speech recognition software and business ERP solutions. Managed a freelance team to complete over 6 web development projects.</p>
-                        </section>
-
-                        <section className="crevice">
-                            <div className="label">ACADEMIC LOG</div>
-                            <p><b>SRM Institute of Science and Technology</b></p>
-                            <p>B.Tech, CSE (Software Engineering) | May 2024 | CGPA: 8.5</p>
-                        </section>
-                    </div>
-                </div>
-            );
+    <script>
+        // FAIL-SAFE START FUNCTION
+        function start() {
+            document.getElementById('gate').style.display = 'none';
+            const content = document.getElementById('content');
+            content.style.display = 'block';
+            setTimeout(() => { content.style.opacity = '1'; }, 10);
+            
+            // Audio Trigger
+            const audio = new Audio('https://www.soundjay.com/nature/ocean-wave-1.mp3');
+            audio.loop = true;
+            audio.play().catch(e => console.log("Audio skipped"));
         }
 
-        const root = ReactDOM.createRoot(document.getElementById('root'));
-        root.render(<Portfolio />);
+        // FAIL-SAFE TIMER
+        const target = new Date("May 20, 2026 00:00:00").getTime();
+        setInterval(() => {
+            const now = new Date().getTime();
+            const diff = target - now;
+            const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const s = Math.floor((diff % (1000 * 60)) / 1000);
+            document.getElementById('timer').innerText = `${d}:${h}:${m}:${s}`;
+        }, 1000);
     </script>
 </body>
 </html>
