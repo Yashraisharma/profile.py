@@ -1,10 +1,3 @@
-I have removed the audio logic entirely and updated the script to handle a purely visual transition. This version focuses on the **3D scroll physics** and the **live golden fluid engine** to ensure the site remains high-end and professional without any sound.
-
-### 🛑 Final "Silent Executive" Build (`index.html`)
-
-Replace your current code with this complete, finalized version. Ensure you have deleted any separate `.css` or `.js` files in your repository, as everything is now contained in this single file.
-
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -79,12 +72,12 @@ Replace your current code with this complete, finalized version. Ensure you have
         .contact-bar a:hover { color: #fff; text-shadow: 0 0 10px var(--gold-light); }
 
         /* 3D SCROLL CARDS */
-        .scroll-container { max-width: 950px; margin: 0 auto; padding: 50px 20px 150px 20px; }
+        .scroll-container { max-width: 1000px; margin: 0 auto; padding: 50px 20px 150px 20px; }
 
         .crevice-card {
             background: rgba(10, 10, 10, 0.4); backdrop-filter: blur(20px); 
             border: 1px solid rgba(191, 149, 63, 0.3); border-left: 5px solid var(--gold-mid);
-            padding: 50px; margin-bottom: 80px; border-radius: 8px; 
+            padding: 50px; margin-bottom: 100px; border-radius: 8px; 
             box-shadow: 0 30px 60px rgba(0,0,0,0.8), inset 0 0 20px rgba(191, 149, 63, 0.05);
             opacity: 0; transform: translateY(150px) rotateX(25deg) scale(0.9);
             transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), opacity 1.2s ease;
@@ -93,36 +86,31 @@ Replace your current code with this complete, finalized version. Ensure you have
 
         .crevice-card.active { opacity: 1; transform: translateY(0) rotateX(0deg) scale(1); }
 
-        .crevice-card:hover {
-            transform: translateY(-5px) scale(1.02) rotateY(1deg); border-color: var(--gold-light);
-            box-shadow: 0 40px 80px rgba(191, 149, 63, 0.2); z-index: 10;
-        }
-
         .section-title {
             font-family: 'Cinzel', serif; color: var(--gold-light); font-size: 2rem;
-            margin-bottom: 30px; letter-spacing: 4px; text-transform: uppercase;
+            margin-bottom: 35px; letter-spacing: 4px; text-transform: uppercase;
             text-shadow: 0 2px 10px rgba(191, 149, 63, 0.4); border-bottom: 1px solid rgba(191,149,63,0.2); padding-bottom: 15px;
         }
 
-        .job-title { font-size: 1.25rem; font-weight: 700; color: #fff; margin-bottom: 5px; }
-        .job-meta { font-size: 0.9rem; color: var(--gold-mid); font-style: italic; margin-bottom: 15px; letter-spacing: 1px; }
+        .job-title { font-size: 1.3rem; font-weight: 700; color: #fff; margin-bottom: 5px; }
+        .job-meta { font-size: 0.95rem; color: var(--gold-mid); font-style: italic; margin-bottom: 20px; letter-spacing: 1px; }
         
         .highlight-gold { color: var(--gold-mid); font-weight: 700; }
-        p { line-height: 1.8; color: #d0d0d0; margin-bottom: 25px; font-size: 1.05rem; }
-        ul { margin-left: 20px; color: #d0d0d0; margin-bottom: 25px; line-height: 1.8; }
-        li { margin-bottom: 10px; }
+        p { line-height: 1.9; color: #e0e0e0; margin-bottom: 25px; font-size: 1.05rem; text-align: justify; }
+        ul { margin-left: 20px; color: #e0e0e0; margin-bottom: 25px; line-height: 1.8; }
+        li { margin-bottom: 12px; }
+
+        .project-block { margin-bottom: 45px; border-bottom: 1px hidden rgba(255,255,255,0.1); padding-bottom: 10px; }
     </style>
 </head>
 <body>
 
     <canvas id="fluid-canvas"></canvas>
 
-    <!-- ENTRY TRIGGER -->
     <div id="entry-gate" onclick="unlockExperience()">
         <div class="gate-text">BEGIN ASCENT</div>
     </div>
 
-    <!-- MAIN INTERFACE -->
     <div id="main-content">
         <header class="hero">
             <h1 class="liquid-gold-text">YASH RAI SHARMA</h1>
@@ -130,8 +118,8 @@ Replace your current code with this complete, finalized version. Ensure you have
             <div class="contact-bar">
                 <span>+91 95501 16685</span> | 
                 <a href="mailto:yashraisharma01@gmail.com">yashraisharma01@gmail.com</a> | 
-                <a href="https://linkedin.com/in/yashraisharma" target="_blank">LinkedIn</a> | 
-                <a href="https://github.com/yashraisharma" target="_blank">GitHub</a>
+                <a href="https://linkedin.com/in/yashraisharma" target="_blank">linkedin.com/in/yashraisharma</a> | 
+                <a href="https://github.com/yashraisharma" target="_blank">github.com/yashraisharma</a>
             </div>
         </header>
 
@@ -139,47 +127,97 @@ Replace your current code with this complete, finalized version. Ensure you have
             <!-- SUMMARY -->
             <div class="crevice-card">
                 <h2 class="section-title">Professional Summary</h2>
-                <p>Technocrat with foundational expertise in <span class="highlight-gold">Software Development, Quantum Computing, Augmented/Virtual Reality, and Cyber Security</span>. Aspiring to lead and learn, with experience in project management, strategic partnerships, and delivering impactful technological solutions.</p>
+                <p>Technocrat, with bases in <span class="highlight-gold">Software development, Quantum Computing, Augmented/Virtual Reality and Cyber Security</span>. Aspiring to lead and learn, with experience in Project management, Human-Resource management, strategic partnerships and Innovation. Seeking opportunities to deliver impactful solutions, grasp and further technological advancements.</p>
             </div>
 
-            <!-- CORPORATE DEPLOYMENT -->
+            <!-- WORK EXPERIENCE -->
             <div class="crevice-card">
-                <h2 class="section-title">Corporate Deployment</h2>
+                <h2 class="section-title">Professional Experience</h2>
+                
                 <div class="job-title">Director | VechTech Consulting Private Limited</div>
                 <div class="job-meta">Hyderabad, TS | April 2023 - Present</div>
-                <p>Directing operations and shaping organizational success. Instrumental in the development of <span class="highlight-gold">speech recognition software</span> and ERP solutions while managing cross-functional teams for successful project delivery.</p>
+                <p>Actively served as Director at “VechTech Consulting Private Limited", contributed to the company's operations and working processes. My experience within my father's company has equipped me with essential management and critical thinking skills, allowing me to hone skills in decision-making and furthering the company's direction.</p>
+                <p>Having been an instrument to the ongoing technical projects, I have specifically been conducive in the development of speech recognition software and the implementation of business ERP solutions. Additionally, I've managed a freelance team to complete over 6 web development projects, overseeing the entire process from work procurement to client coordination.</p>
+
+                <div class="job-title">Application Development Engineer Intern | HappiApps</div>
+                <div class="job-meta">Chennai, TN | Aug 2022 – Jan 2023</div>
+                <p>Learned and synchronized within a team environment, gaining practical software development experience across multiple projects. Specializing as a UI/UX and front-end engineer, I acquired essential insights into effective collaboration and project execution methodologies.</p>
 
                 <div class="job-title">Cyber Security Intern | Allvy Software Solutions</div>
                 <div class="job-meta">Feb 2024</div>
-                <p>Managed government tenders for establishing <span class="highlight-gold">Security Operations Centers (SOCs)</span> and Cyber Network Operations Centers (C-NOCs).</p>
+                <p>Involved in handling government tenders focused on establishing <span class="highlight-gold">Security Operations Centers (SOCs)</span> and Cyber Network Operations Centers (C-NOCs). Gained an understanding of the technical and operational aspects of SOC and C-NOC setups while grasping the intricacies of tender processes.</p>
             </div>
 
-            <!-- TECHNICAL PROJECTS -->
+            <!-- OTHER EXPERIENCES -->
+            <div class="crevice-card">
+                <h2 class="section-title">Leadership & Initiatives</h2>
+                
+                <div class="job-title">Core-Quantum Lead | Quantum Computing Lab SRM</div>
+                <div class="job-meta">Mar 2023 – Oct 2023</div>
+                <p>Engaged in research and development with a team of over 50 members. Drove innovative ideas and fostered strategic partnerships to enhance the potential of the college club, securing sponsorships and procuring professors to enrich the learning experiences of members.</p>
+
+                <div class="job-title">Events Director | Cherry Network +</div>
+                <div class="job-meta">Nov 2022 – Sep 2023</div>
+                <p>Played a pivotal role in overseeing the planning and execution of various activities, leading a dedicated team in organizing events from large-scale gatherings to micro gatherings. Transitioned into a mentorship role, guiding peers towards better management of the club.</p>
+
+                <div class="job-title">VP & Industry Relations Head | CodeChamps Lab SRM</div>
+                <div class="job-meta">Jan 2023 – Feb 2023</div>
+                <p>Engaged multiple professionals from various industries to enrich the experiences of club members. Facilitated workshops, talks, and collaborative projects, fostering meaningful connections between academia and industry.</p>
+            </div>
+
+            <!-- PROJECTS -->
             <div class="crevice-card">
                 <h2 class="section-title">Technical Projects</h2>
-                <p><strong>AI Heart Attack Prediction:</strong> Developed an AI system using the Cleveland dataset to predict heart attack probabilities with high accuracy models.</p>
-                <p><strong>SRM NAV System:</strong> Architected a VR/AR navigation system for SRM infrastructure using <span class="highlight-gold">Blender and Unity</span>.</p>
+                
+                <div class="project-block">
+                    <div class="job-title">Heart Attack Prediction System</div>
+                    <p><strong>Objective:</strong> Predict the probability of heart attacks using A.I. indicators to allow doctors to take necessary precautions. The system efficiently handles data for multiple patients simultaneously.</p>
+                    <p><strong>Solution:</strong> Uses the Cleveland dataset to analyze and predict probabilities through various Machine Learning models, comparing them to isolate the best prediction accuracy.</p>
+                </div>
+
+                <div class="project-block">
+                    <div class="job-title">Pneumonia Detection System</div>
+                    <p><strong>Objective:</strong> Develop an accurate algorithm that can effectively analyze medical images to identify bacterial and viral pneumonia cases with varying degrees of severity.</p>
+                    <p><strong>Solution:</strong> Deep learning model integrated into detection software, developed by preparing a large dataset of chest X-ray images and evaluating effectiveness in medical assistance.</p>
+                </div>
+
+                <div class="project-block">
+                    <div class="job-title">India Map Interactive</div>
+                    <p><strong>Objective:</strong> An immersive interactive 3D representation of India, enriched with visual guides, historical information, and real-time updates on current events.</p>
+                    <p><strong>Solution:</strong> GUI enables users to interact with Python-based software effortlessly, accessing navigation controls, information panels, and integrated news updates.</p>
+                </div>
+
+                <div class="project-block">
+                    <div class="job-title">SRM NAV System VR/AR</div>
+                    <p><strong>Objective:</strong> Implement an optimized navigation system within the SRM infrastructure using VR headsets and timed lapses to determine the fastest routes.</p>
+                    <p><strong>Solution:</strong> Leveraged <span class="highlight-gold">Blender</span> for modeling SRM infrastructure and <span class="highlight-gold">Unity</span> for integration, applying Kruskal's algorithm to compute time intervals for optimal route determination.</p>
+                </div>
             </div>
 
-            <!-- ACADEMIA -->
+            <!-- ACADEMIA & SKILLS -->
             <div class="crevice-card">
-                <h2 class="section-title">Academia & Arsenal</h2>
-                <div class="job-title">SRM Institute of Science and Technology</div>
-                <div class="job-meta">B.Tech, CSE (Software Engineering) | May 2024 | CGPA: 8.5</div>
+                <h2 class="section-title">Academic Profile</h2>
+                <div class="job-title">SRM Institute of Science and Technology, Chennai</div>
+                <div class="job-meta">B.Tech, CSE w/s Software Engineering | May 2024 | CGPA: 8.5</div>
+                
+                <p><strong>Relevant Coursework:</strong> AI, OOPS, Operating Systems, Data Structures and Algorithms, DBMS.</p>
+                
                 <p style="padding: 15px; background: rgba(191, 149, 63, 0.05); border-left: 2px solid var(--gold-dark); border-radius: 4px;">
-                    <strong>Excellence Award Recipient (May 2024):</strong> Recognized for outstanding contributions to Entrepreneurship, Management, and Startups.
+                    <strong>Excellence Award Recipient (May 2024):</strong> Recognized by the School of Computing, SRM, for Entrepreneurship, Management, and Startups.
                 </p>
+
                 <br>
+                <div class="job-title">Technical Skills</div>
                 <ul>
-                    <li><span class="highlight-gold">Languages:</span> Python3, C, C++, HTML/CSS, JS, React JS.</li>
-                    <li><span class="highlight-gold">Tools:</span> AutoCAD, Figma, MATLAB, Blender, Unity3D.</li>
+                    <li><span class="highlight-gold">Programming:</span> Python3, C, C++, HTML CSS+, JavaScript, React JS, Offensive Security.</li>
+                    <li><span class="highlight-gold">Design & Modeling:</span> AutoCAD, Figma, MATLAB, Microsoft Office, Blender, Unity3.</li>
+                    <li><span class="highlight-gold">Certifications:</span> Google-Data Analytics, Google-Foundations of Project Management, IBM Introduction to Cloud Computing, Erasmus University Rotterdam-Serious Gaming.</li>
                 </ul>
             </div>
         </div>
     </div>
 
     <script>
-        /* LIVE GOLD FLUID BACKGROUND ENGINE */
         const canvas = document.getElementById('fluid-canvas');
         const ctx = canvas.getContext('2d');
         let width, height, time = 0;
@@ -208,15 +246,20 @@ Replace your current code with this complete, finalized version. Ensure you have
         }
         drawFluid();
 
-        /* VISUAL REVEAL LOGIC */
         function unlockExperience() {
             const gate = document.getElementById('entry-gate');
             const content = document.getElementById('main-content');
             gate.style.opacity = '0';
             setTimeout(() => { gate.style.display = 'none'; content.style.display = 'block'; setTimeout(() => { content.style.opacity = '1'; }, 50); }, 1500);
+
+            /* TO RESTORE MUSIC:
+            const audio = new Audio('background-music (mp3cut.net).mp3');
+            audio.loop = true;
+            audio.volume = 0.5;
+            audio.play().catch(e => console.log("Music interaction required"));
+            */
         }
 
-        /* 3D SCROLL REVEAL */
         document.addEventListener("DOMContentLoaded", () => {
             const cards = document.querySelectorAll('.crevice-card');
             const observer = new IntersectionObserver((entries) => {
@@ -227,4 +270,3 @@ Replace your current code with this complete, finalized version. Ensure you have
     </script>
 </body>
 </html>
-```
