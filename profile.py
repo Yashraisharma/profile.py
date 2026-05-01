@@ -1,7 +1,7 @@
 import streamlit as st
 
 # --- PAGE CONFIG ---
-st.set_page_config(page_title="Nandeep Rai Sharma | Portfolio", page_icon="👤", layout="centered")
+st.set_page_config(page_title="Yash Rai Sharma | Portfolio", page_icon="👤", layout="centered")
 
 # --- UI STYLING ---
 st.markdown("""
@@ -14,7 +14,7 @@ st.markdown("""
     """, unsafe_allow_html=True)
 
 # --- HEADER / BIO ---
-st.title("Nandeep Rai Sharma")
+st.title("Yash Rai Sharma")
 st.write("### Senior Growth Content Engineer & Software Professional")
 st.write("📍 Hyderabad, India")
 
@@ -24,7 +24,7 @@ I specialize in bridging the gap between complex technical infrastructure and
 high-velocity marketing growth.
 """)
 
-# --- EXPERIENCE SHOT ---
+# --- EXPERIENCE SECTION ---
 st.header("Professional Profile")
 st.write("""
 Currently serving as an **Assistant Growth Manager at Apollo 247**, I lead 
@@ -49,8 +49,8 @@ with col2:
     st.write("- **Analytics:** Funnel Optimization, User Segmentation")
     st.write("- **Execution:** Automated Lifecycle Workflows")
 
-# --- ACHIEVEMENTS ---
-st.header("Key Highlights")
+# --- KEY HIGHLIGHTS ---
+st.header("Key Achievements")
 st.success("**Infrastructure:** Developed a Python ecosystem managing real-time data sync for 48,000+ users.")
 st.success("**Automation:** Built custom scripts to streamline growth experiments, reducing manual overhead by 70%.")
 
@@ -61,8 +61,8 @@ st.write("Connect with me to discuss growth engineering, marketing automation, o
 # Social Buttons
 c1, c2, c3 = st.columns(3)
 with c1:
-    st.link_button("LinkedIn", "https://www.linkedin.com/in/YOUR_PROFILE") # Update this
+    st.link_button("LinkedIn", "https://www.linkedin.com/in/YOUR_PROFILE") 
 with c2:
-    st.link_button("GitHub", "https://github.com/YOUR_USERNAME") # Update this
+    st.link_button("GitHub", "https://github.com/YOUR_USERNAME") 
 with c3:
     st.link_button("Contact via Email", "mailto:your.email@example.com")
