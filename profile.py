@@ -3,171 +3,184 @@ import streamlit as st
 # --- PAGE SETUP ---
 st.set_page_config(page_title="Yash Rai Sharma | Technocrat", layout="wide")
 
-# --- CINEMATIC CSS & JAVASCRIPT ---
+# --- ADVANCED CINEMATIC ENGINE ---
 st.markdown("""
     <style>
-    @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Inter:wght@300;400;600&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Montserrat:wght@300;400;600&display=swap');
 
-    /* Background: Ancient Jagged Rock Texture */
+    /* Global Reset & Stone Background */
     .stApp {
-        background: radial-gradient(circle at center, rgba(20, 20, 20, 0.8) 0%, rgba(0, 0, 0, 1) 100%),
-                    url('https://www.transparenttextures.com/patterns/dark-stone.png'),
-                    #050505;
+        background: #050505;
+        color: #d4d4d4;
+    }
+
+    /* The "Crevice" Background Effect */
+    body {
+        background-image: 
+            linear-gradient(to right, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.9) 100%),
+            url('https://www.transparenttextures.com/patterns/asfalt-dark.png');
         background-attachment: fixed;
-        color: #e0e0e0;
     }
 
-    /* Animated Liquid Gold Flow effect */
-    @keyframes goldFlow {
-        0% { background-position: 0% 0%; }
-        50% { background-position: 100% 50%; }
-        100% { background-position: 0% 100%; }
+    /* Flowing Gold Vein Animation */
+    @keyframes veinFlow {
+        0% { filter: drop-shadow(0 0 5px #bf953f) brightness(1); }
+        50% { filter: drop-shadow(0 0 20px #fcf6ba) brightness(1.5); }
+        100% { filter: drop-shadow(0 0 5px #bf953f) brightness(1); }
     }
 
-    .gold-header {
+    /* Professional Title Branding */
+    .hero-name {
         font-family: 'Cinzel', serif;
-        background: linear-gradient(90deg, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
-        background-size: 200% auto;
+        font-size: clamp(40px, 8vw, 90px);
+        font-weight: 900;
+        text-align: center;
+        background: linear-gradient(180deg, #fcf6ba 0%, #bf953f 50%, #8a6d3b 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
-        animation: goldFlow 5s linear infinite;
-        font-weight: 900;
-        text-transform: uppercase;
-        letter-spacing: 5px;
+        letter-spacing: 12px;
+        margin-bottom: 0px;
+        filter: drop-shadow(0 5px 15px rgba(0,0,0,0.8));
     }
 
-    /* 3D "Rock Crevice" Section Design */
-    .crevice-section {
-        background: rgba(10, 10, 10, 0.7);
-        border-left: 3px solid #b38728;
-        padding: 45px;
-        margin-bottom: 60px;
-        border-radius: 0 40px 40px 0;
-        box-shadow: -15px 0px 30px rgba(0,0,0,0.6);
-        transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
-        perspective: 1500px;
+    /* Verbatim Section Containers (The "Rock Crevice") */
+    .stone-block {
+        background: rgba(15, 15, 15, 0.8);
+        border: 1px solid rgba(191, 149, 63, 0.2);
+        padding: 60px;
+        margin: 80px auto;
+        max-width: 900px;
+        border-radius: 4px;
+        position: relative;
+        box-shadow: 0 30px 60px rgba(0,0,0,0.7);
+        transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    .crevice-section:hover {
-        transform: perspective(1500px) rotateY(-4deg) translateX(15px);
-        background: rgba(179, 135, 40, 0.04);
-        border-left: 3px solid #fcf6ba;
+    /* The "Liquid Gold" vein flowing beside the section */
+    .stone-block::before {
+        content: "";
+        position: absolute;
+        top: 0; left: -10px; width: 4px; height: 100%;
+        background: linear-gradient(to bottom, #bf953f, #fcf6ba, #bf953f);
+        animation: veinFlow 3s infinite ease-in-out;
     }
 
-    .section-label {
+    .stone-block:hover {
+        transform: scale(1.02) translateY(-10px);
+        border-color: rgba(252, 246, 186, 0.5);
+        background: rgba(20, 20, 20, 0.9);
+    }
+
+    .section-title {
         font-family: 'Cinzel', serif;
-        color: #bf953f;
-        font-size: 1.4rem;
-        letter-spacing: 4px;
-        margin-bottom: 25px;
-        font-weight: 700;
+        color: #c0a062;
+        font-size: 1.2rem;
+        letter-spacing: 5px;
+        margin-bottom: 30px;
+        text-transform: uppercase;
+        border-bottom: 1px solid rgba(191, 149, 63, 0.3);
+        display: inline-block;
+        padding-bottom: 5px;
     }
 
-    /* Verbatim Text Styling */
-    p, li, div {
-        font-family: 'Inter', sans-serif;
-        line-height: 1.8;
-        color: #d1d1d1;
+    /* Resume Typography */
+    .resume-text {
+        font-family: 'Montserrat', sans-serif;
+        line-height: 1.9;
+        font-size: 1.05rem;
+        color: #b0b0b0;
         text-align: justify;
     }
 
-    b, strong { color: #fcf6ba; font-weight: 600; }
+    .highlight { color: #fcf6ba; font-weight: 600; }
 
-    /* Invisible click-layer to trigger audio */
-    #audio-trigger {
+    /* Audio Trigger UI */
+    #audio-overlay {
         position: fixed;
         top: 0; left: 0; width: 100%; height: 100%;
-        z-index: 99999;
+        z-index: 10000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(0,0,0,0.9);
         cursor: pointer;
-        background: transparent;
+        transition: opacity 1s ease;
     }
 
     #MainMenu, footer, header {visibility: hidden;}
     </style>
 
-    <!-- AUDIO ELEMENT -->
-    <audio id="waves-audio" loop>
+    <div id="audio-overlay" onclick="startExperience()">
+        <div style="text-align:center;">
+            <p style="font-family:'Cinzel'; color:#bf953f; letter-spacing:5px;">CLICK TO ENTER THE ABYSS</p>
+            <div style="width:50px; height:2px; background:#bf953f; margin: 20px auto; animation: veinFlow 2s infinite;"></div>
+        </div>
+    </div>
+
+    <audio id="ambient-waves" loop>
         <source src="https://www.soundjay.com/nature/ocean-wave-1.mp3" type="audio/mpeg">
     </audio>
 
-    <!-- SCRIPT FOR INTERACTION-BASED AUDIO -->
     <script>
-    const player = document.getElementById('waves-audio');
-    const trigger = document.createElement('div');
-    trigger.id = 'audio-trigger';
-    document.body.appendChild(trigger);
-
-    trigger.addEventListener('click', () => {
-        player.play();
-        trigger.remove(); // Remove layer so user can interact with content
-    });
+    function startExperience() {
+        const audio = document.getElementById('ambient-waves');
+        audio.volume = 0.4;
+        audio.play();
+        document.getElementById('audio-overlay').style.opacity = '0';
+        setTimeout(() => {
+            document.getElementById('audio-overlay').style.display = 'none';
+        }, 1000);
+    }
     </script>
     """, unsafe_allow_html=True)
 
-# --- VERBATIM RESUME CONTENT ---
-with st.container():
-    # HERO SECTION
-    st.markdown('<h1 class="gold-header" style="font-size: 80px; margin-bottom:0;">YASH RAI SHARMA</h1>', unsafe_allow_html=True)
-    st.markdown('<p style="letter-spacing:10px; color:#bf953f; font-weight:bold; margin-top:-10px;">TECHNOCRAT | SOFTWARE ENGINEER</p>', unsafe_allow_html=True)
-    st.write("+91 95501 16685 | yashraisharma01@gmail.com")
-    st.write("github.com/yashraisharma | linkedin.com/in/yashraisharma[cite: 1]")
-    
-    st.markdown("<br><br>", unsafe_allow_html=True)
+# --- VERBATIM CONTENT ---
+st.markdown('<h1 class="hero-name">YASH RAI SHARMA</h1>', unsafe_allow_html=True)
+st.markdown('<p style="text-align:center; letter-spacing:10px; color:#c0a062; font-family:Cinzel; margin-top:-20px;">TECHNOCRAT | ENGINEER</p>', unsafe_allow_html=True)
 
-    # SUMMARY
-    st.markdown('<div class="crevice-section">', unsafe_allow_html=True)
-    st.markdown('<div class="section-label">SUMMARY</div>', unsafe_allow_html=True)
-    st.write("Technocrat, with bases in Software development, Quantum Computing, Augmented/Virtual Reality and Cyber Security.[cite: 1]")
-    st.write("Aspiring to lead and learn, with experience in Project management, Human-Resource management, strategic partnerships and Innovation.[cite: 1]")
-    st.write("Seeking opportunities to deliver impactful solutions, grasp and further technological advancements.[cite: 1]")
-    st.markdown('</div>', unsafe_allow_html=True)
+# Contact Info
+st.markdown(f"""
+<div style="text-align:center; font-family:Montserrat; font-size:0.9rem; opacity:0.7; margin-bottom:100px;">
+    +91 95501 16685 &nbsp; | &nbsp; yashraisharma01@gmail.com &nbsp; | &nbsp; github.com/yashraisharma
+</div>
+""", unsafe_allow_html=True)
 
-    # EDUCATION
-    st.markdown('<div class="crevice-section">', unsafe_allow_html=True)
-    st.markdown('<div class="section-label">EDUCATION</div>', unsafe_allow_html=True)
-    st.write("**SRM Institute of Science and Technology, Chennai, TN**[cite: 1]")
-    st.write("B.Tech, Computer Science Engineering w/s Software Engineering | May 2024 | CGPA: 8.5[cite: 1]")
-    st.write("Relevant coursework: AI, OOPS, Operating Systems, Data Structures and Algorithms, Design and Analysis of Algorithms, DBMS[cite: 1]")
-    st.write("<br>**Fiitjee Junior College, Saifabad**[cite: 1]", unsafe_allow_html=True)
-    st.write("Intermediate(+1 & +2) | Jun 2020 | Percentage: 71%[cite: 1]")
-    st.markdown('</div>', unsafe_allow_html=True)
-
-    # TECHNICAL SKILLS
-    st.markdown('<div class="crevice-section">', unsafe_allow_html=True)
-    st.markdown('<div class="section-label">TECHNICAL SKILLS</div>', unsafe_allow_html=True)
-    st.write("**Programming:** Python3, C, C++, HTML CSS+, JavaScript, React JS, Offensive Security[cite: 1]")
-    st.write("**Design and Modeling Tools:** AutoCAD, Figma, MATLAB, Microsoft Office, Blender, Unity3[cite: 1]")
-    st.write("**Certifications:** Google-Data Analytics, Google-Foundations of Project Management, IBM Introduction to Cloud Computing, Erasmus University Rotterdam-Serious Gaming[cite: 1]")
-    st.markdown('</div>', unsafe_allow_html=True)
-
-    # WORK EXPERIENCE
-    st.markdown('<div class="crevice-section">', unsafe_allow_html=True)
-    st.markdown('<div class="section-label">WORK EXPERIENCE</div>', unsafe_allow_html=True)
-    
-    st.write("**VechTech Consulting Private Limited, Hyderabad, TS: Director | Apr 2023**[cite: 1]")
-    st.write("Actively served as Director at \"VechTech Consulting Private Limited\", Hyderabad, TS, Since April 2023, contributed to the company's operations and working processes. My experience within my father's company, has equipped me with essential management and critical thinking skills. This involvement has allowed me to hone my skills in decision-making, furthering the company's direction and success. With my role as a partaker in the company endeavors, I've gained valuable insights into effective running of a company, enhancing my understanding of organizational dynamics and leadership principles.[cite: 1]")
-    st.write("Having been an instrument to the ongoing technical projects at VechTech Consulting Private Limited, I have specifically been conducive in the development of speech recognition software and the implementation of business ERP solutions. In these roles, I've facilitated communication among team members, ensured project milestones were met, and provided input to enhance the overall progress and efficiency of these projects. Additionally, separate from these initiatives, I've managed a freelance team to complete over 6 web development projects. From work procurement to client dealings and team coordination, I've overseen the entire process, ensuring successful project delivery and client satisfaction. These experiences have provided me, a diverse skill set and strengthened my abilities to manage multifaceted projects effectively.[cite: 1]")
-    
-    st.markdown("<br>", unsafe_allow_html=True)
-    st.write("**HappiApps, Chennai, TN: Application Development Engineer Intern | Aug 2022-Jan 2023**[cite: 1]")
-    st.write("Learned and synchronized within a team environment, gained valuable practical software development experience across multiple projects. Specializing as a UI/UX and front-end engineer, I acquired essential insights into effective collaboration and project execution methodologies. Working alongside my peers, I honed my skills in communication, problem-solving, and adaptability, fostering a deep understanding of the nuances involved in successful team dynamics and project delivery..[cite: 1]")
-    
-    st.markdown("<br>", unsafe_allow_html=True)
-    st.write("**Allvy Software Solutions: Cyber Security Intern | Feb 2024**[cite: 1]")
-    st.write("Employed as a cybersecurity intern at Allvy Software Solutions, I had the opportunity to immerse myself in various facets of the field, driven by a passion for continuous learning and exploration. During my internship, I was actively involved in handling government tenders focused on establishing Security Operations Centers (SOCs) and Cyber Network Operations Centers (C-NOCs). This hands-on experience provided me with valuable insights into the intricacies of cybersecurity, allowing me to grasp not only the foundational principles but also the practical considerations involved in tender processes and the establishment of critical cybersecurity infrastructure. Working closely with experienced professionals, I gained an understanding of the technical and operational aspects of SOC and C-NOC setups.[cite: 1]")
-    st.markdown('</div>', unsafe_allow_html=True)
-
-    # RECOGNITION
-    st.markdown('<div class="crevice-section">', unsafe_allow_html=True)
-    st.markdown('<div class="section-label">AWARDS AND RECOGNITION</div>', unsafe_allow_html=True)
-    st.write("**Excellence award SRM | MAY 2024**[cite: 1]")
-    st.write("Recipient of the Excellence Award for Entrepreneurship, Management, and Startups from the School of Computing, SRM, This award underscores my commitment to fostering entrepreneurial spirit and effective management practices within the academic community and beyond.[cite: 1]")
-    st.markdown('</div>', unsafe_allow_html=True)
-
-# --- FOOTER ---
-st.markdown("<br><br><br>", unsafe_allow_html=True)
-st.markdown("""
-    <div style="text-align:center; padding: 40px; opacity:0.6;">
-        <p class="gold-header" style="font-size:18px; animation:none;">Yash Rai Sharma &copy; 2026</p>
+# Summary
+st.markdown(f"""
+<div class="stone-block">
+    <div class="section-title">Summary</div>
+    <div class="resume-text">
+        Technocrat, with bases in <span class="highlight">Software development, Quantum Computing, Augmented/Virtual Reality and Cyber Security</span>. 
+        Aspiring to lead and learn, with experience in Project management, Human-Resource management, strategic partnerships and Innovation. 
+        Seeking opportunities to deliver impactful solutions, grasp and further technological advancements[cite: 1].
     </div>
+</div>
+""", unsafe_allow_html=True)
+
+# Experience: VechTech
+st.markdown(f"""
+<div class="stone-block">
+    <div class="section-title">Work Experience</div>
+    <div class="resume-text">
+        <p><b>VechTech Consulting Private Limited, Hyderabad, TS: Director | Apr 2023</b>[cite: 1]</p>
+        Actively served as Director at "VechTech Consulting Private Limited", Hyderabad, TS, Since April 2023, contributed to the company's operations and working processes[cite: 1]. 
+        My experience within my father's company, has equipped me with essential management and critical thinking skills[cite: 1]. 
+        This involvement has allowed me to hone my skills in decision-making, furthering the company's direction and success[cite: 1].
+        <br><br>
+        Having been an instrument to the ongoing technical projects at VechTech Consulting Private Limited, I have specifically been conducive in the 
+        development of speech recognition software and the implementation of business ERP solutions[cite: 1].
+    </div>
+</div>
+""", unsafe_allow_html=True)
+
+# Awards
+st.markdown(f"""
+<div class="stone-block">
+    <div class="section-title">Recognition</div>
+    <div class="resume-text">
+        <b>Excellence award SRM | MAY 2024</b>[cite: 1]<br>
+        Recipient of the Excellence Award for Entrepreneurship, Management, and Startups from the School of Computing, SRM[cite: 1]. 
+        This award underscores my commitment to fostering entrepreneurial spirit and effective management practices within the academic community and beyond[cite: 1].
+    </div>
+</div>
 """, unsafe_allow_html=True)
