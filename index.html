@@ -57,20 +57,27 @@
             background: linear-gradient(45deg, var(--gold-dark), #fff, var(--gold-mid), var(--gold-light));
             background-size: 300% 300%; -webkit-background-clip: text; -webkit-text-fill-color: transparent;
             animation: liquid-flow 5s ease infinite;
-            filter: drop-shadow(0px 15px 25px rgba(191,149,63,0.3)); margin-bottom: 20px; letter-spacing: 8px;
+            filter: drop-shadow(0px 15px 25px rgba(191,149,63,0.3)); margin-bottom: 10px; letter-spacing: 8px;
         }
 
         @keyframes liquid-flow { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
 
-        .subtitle { font-size: 1.2rem; letter-spacing: 10px; text-transform: uppercase; color: #ccc; text-shadow: 0 5px 10px #000; }
+        .subtitle { font-size: 1.1rem; letter-spacing: 8px; text-transform: uppercase; color: #ccc; text-shadow: 0 5px 10px #000; margin-bottom: 25px; }
+        
+        .contact-bar {
+            display: flex; gap: 20px; flex-wrap: wrap; justify-content: center;
+            font-size: 0.9rem; letter-spacing: 2px; color: var(--gold-mid);
+        }
+        .contact-bar a { color: var(--gold-mid); text-decoration: none; transition: color 0.3s ease; }
+        .contact-bar a:hover { color: #fff; text-shadow: 0 0 10px var(--gold-light); }
 
         /* Enhanced 3D Scroll Cards */
-        .scroll-container { max-width: 900px; margin: 0 auto; padding: 50px 20px 150px 20px; }
+        .scroll-container { max-width: 950px; margin: 0 auto; padding: 50px 20px 150px 20px; }
 
         .crevice-card {
             background: rgba(10, 10, 10, 0.4); backdrop-filter: blur(20px); 
             border: 1px solid rgba(191, 149, 63, 0.3); border-left: 5px solid var(--gold-mid);
-            padding: 50px; margin-bottom: 100px; border-radius: 8px; 
+            padding: 50px; margin-bottom: 80px; border-radius: 8px; 
             box-shadow: 0 30px 60px rgba(0,0,0,0.8), inset 0 0 20px rgba(191, 149, 63, 0.05);
             opacity: 0; transform: translateY(150px) rotateX(25deg) scale(0.9);
             transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), opacity 1.2s ease, box-shadow 0.4s ease, border-color 0.4s ease;
@@ -80,18 +87,26 @@
         .crevice-card.active { opacity: 1; transform: translateY(0) rotateX(0deg) scale(1); }
 
         .crevice-card:hover {
-            transform: translateY(-10px) scale(1.03) rotateY(2deg); border-color: var(--gold-light);
+            transform: translateY(-5px) scale(1.02) rotateY(1deg); border-color: var(--gold-light);
             box-shadow: 0 40px 80px rgba(191, 149, 63, 0.2), inset 0 0 30px rgba(191, 149, 63, 0.1); z-index: 10;
         }
 
         .section-title {
             font-family: 'Cinzel', serif; color: var(--gold-light); font-size: 2rem;
-            margin-bottom: 25px; letter-spacing: 4px; text-transform: uppercase;
-            text-shadow: 0 2px 10px rgba(191, 149, 63, 0.4);
+            margin-bottom: 30px; letter-spacing: 4px; text-transform: uppercase;
+            text-shadow: 0 2px 10px rgba(191, 149, 63, 0.4); border-bottom: 1px solid rgba(191,149,63,0.2); padding-bottom: 15px;
         }
 
+        .job-title { font-size: 1.25rem; font-weight: 700; color: #fff; margin-bottom: 5px; }
+        .job-meta { font-size: 0.9rem; color: var(--gold-mid); font-style: italic; margin-bottom: 15px; letter-spacing: 1px; }
+        
         .highlight-gold { color: var(--gold-mid); font-weight: 700; }
-        p { line-height: 1.9; color: #e0e0e0; margin-bottom: 20px; font-size: 1.1rem; }
+        p { line-height: 1.8; color: #d0d0d0; margin-bottom: 25px; font-size: 1.05rem; }
+        ul { margin-left: 20px; color: #d0d0d0; margin-bottom: 25px; line-height: 1.8; }
+        li { margin-bottom: 10px; }
+
+        .project-block { margin-bottom: 35px; }
+        .project-block:last-child { margin-bottom: 0; }
     </style>
 </head>
 <body>
@@ -106,37 +121,98 @@
         <header class="hero">
             <h1 class="liquid-gold-text">YASH RAI SHARMA</h1>
             <p class="subtitle">Technocrat <span style="color: var(--gold-mid)">|</span> Executive Director <span style="color: var(--gold-mid)">|</span> Engineer</p>
+            <div class="contact-bar">
+                <span>+91 95501 16685</span> | 
+                <a href="mailto:yashraisharma01@gmail.com">yashraisharma01@gmail.com</a> | 
+                <a href="https://linkedin.com/in/yashraisharma" target="_blank">LinkedIn</a> | 
+                <a href="https://github.com/yashraisharma" target="_blank">GitHub</a>
+            </div>
         </header>
 
         <div class="scroll-container">
+            <!-- SUMMARY -->
             <div class="crevice-card">
                 <h2 class="section-title">Professional Summary</h2>
-                <p>Technocrat with deep expertise in <span class="highlight-gold">Software Development, Quantum Computing, Augmented/Virtual Reality, and Cyber Security</span>.</p>
-                <p>Proven track record in executive project management, strategic partnerships, and innovation. Dedicated to leading high-impact technological advancements and delivering scalable business solutions.</p>
+                <p>Technocrat with foundational expertise in <span class="highlight-gold">Software Development, Quantum Computing, Augmented/Virtual Reality, and Cyber Security</span>. Aspiring to lead and learn, with a proven track record in project management, human-resource management, strategic partnerships, and innovation. Dedicated to grasping new technological advancements and delivering impactful, scalable solutions.</p>
             </div>
 
+            <!-- WORK EXPERIENCE -->
             <div class="crevice-card">
-                <h2 class="section-title">Executive Deployment</h2>
-                <p><span class="highlight-gold">Director | VechTech Consulting Private Limited</span></p>
-                <p style="font-size: 0.95rem; color: #a0a0a0; font-style: italic; margin-top: -15px;">Hyderabad, TS | April 2023 - Present</p>
-                <p>Driving operational excellence and strategic direction for ongoing technical projects. Spearheaded the development of proprietary speech recognition software and the successful implementation of enterprise ERP solutions.</p>
-                <p>Concurrently managed an agile freelance team to architect and deliver over 6 complex web development projects, overseeing the entire lifecycle from client procurement to final deployment.</p>
+                <h2 class="section-title">Corporate Deployment</h2>
+                
+                <div class="job-title">Director | VechTech Consulting Private Limited</div>
+                <div class="job-meta">Hyderabad, TS | April 2023 - Present</div>
+                <p>Actively contributing to company operations, driving decision-making, and shaping organizational direction. Serving as a crucial instrument in ongoing technical projects, specifically facilitating the development of proprietary <span class="highlight-gold">speech recognition software</span> and enterprise ERP solutions. Concurrently managing a freelance team to deliver over 6 complex web development projects, overseeing everything from client procurement to final deployment.</p>
+
+                <div class="job-title">Cyber Security Intern | Allvy Software Solutions</div>
+                <div class="job-meta">Feb 2024</div>
+                <p>Immersed in multifaceted cybersecurity operations, handling government tenders focused on establishing <span class="highlight-gold">Security Operations Centers (SOCs)</span> and Cyber Network Operations Centers (C-NOCs). Gained critical hands-on insight into foundational security principles, infrastructure establishment, and operational setups.</p>
+
+                <div class="job-title">Application Development Engineer Intern | HappiApps</div>
+                <div class="job-meta">Chennai, TN | Aug 2022 – Jan 2023</div>
+                <p>Specialized as a UI/UX and front-end engineer across multiple agile projects. Acquired essential insights into effective software collaboration, project execution methodologies, and team dynamics while refining problem-solving adaptability.</p>
             </div>
 
+            <!-- PROJECTS -->
             <div class="crevice-card">
-                <h2 class="section-title">Academic Excellence & Awards</h2>
-                <p><span class="highlight-gold">SRM Institute of Science and Technology</span></p>
-                <p>B.Tech, Computer Science Engineering w/s Software Engineering | CGPA: 8.5</p>
-                <p style="margin-top: 25px; padding: 20px; background: rgba(191, 149, 63, 0.05); border-left: 2px solid var(--gold-dark); border-radius: 4px;">
+                <h2 class="section-title">Technical Projects</h2>
+                
+                <div class="project-block">
+                    <div class="job-title">AI Heart Attack Prediction System</div>
+                    <p>Leveraged the Cleveland dataset to train, analyze, and deploy Machine Learning models designed to predict the probability of a heart attack. Conducted extensive comparative analysis across various algorithms to isolate the model yielding the highest prediction accuracy, providing medical professionals with a preventative indicator tool.</p>
+                </div>
+
+                <div class="project-block">
+                    <div class="job-title">Deep Learning Pneumonia Detection</div>
+                    <p>Engineered a reliable deep-learning algorithm to analyze medical chest X-rays for pneumonia detection. The software distinguishes between bacterial and viral strains across varying severity levels, serving as an assistive diagnostic tool for healthcare providers.</p>
+                </div>
+
+                <div class="project-block">
+                    <div class="job-title">Interactive 3D Map of India</div>
+                    <p>Developed an immersive, Python-based GUI system offering a 3D representation of India. Integrated visual guides, historical context, and real-time news updates to create an engaging platform for geographical and cultural exploration.</p>
+                </div>
+
+                <div class="project-block">
+                    <div class="job-title">SRM NAV System (VR/AR)</div>
+                    <p>Architected an optimized VR navigation system for the SRM infrastructure using <span class="highlight-gold">Blender and Unity</span>. Implemented Kruskal's algorithm to compute time intervals, ensuring users are guided along the fastest possible routes between designated waypoints.</p>
+                </div>
+            </div>
+
+            <!-- LEADERSHIP -->
+            <div class="crevice-card">
+                <h2 class="section-title">Leadership & Initiatives</h2>
+                
+                <div class="job-title">Core-Quantum Lead | Quantum Computing Lab SRM</div>
+                <div class="job-meta">Chennai, TN | Mar 2023 – Oct 2023</div>
+                <p>Led a dynamic team of 50+ members in quantum computing R&D. Fostered strategic partnerships, secured event sponsorships, and procured academic professionals to enrich the organizational learning experience.</p>
+
+                <div class="job-title">Events Director & Technology Mentor | Cherry Network +</div>
+                <div class="job-meta">Chennai, TN | Nov 2022 – Sep 2023</div>
+                <p>Orchestrated the planning and execution of large-scale and micro-gatherings. Transitioned into a mentorship role, advising peers on effective event strategies, resource management, and organizational growth.</p>
+
+                <div class="job-title">VP & Industry Relations Head | CodeChamps Lab SRM</div>
+                <div class="job-meta">Chennai, TN | Jan 2023 – Feb 2023</div>
+                <p>Bridged academia and industry by collaborating with 5+ industry experts. Organized workshops, talks, and projects to provide members with real-world professional insights and mentorship.</p>
+            </div>
+
+            <!-- ACADEMIA & SKILLS -->
+            <div class="crevice-card">
+                <h2 class="section-title">Academia & Technical Arsenal</h2>
+                
+                <div class="job-title">SRM Institute of Science and Technology</div>
+                <div class="job-meta">Chennai, TN | B.Tech, CSE (Software Engineering) | May 2024 | CGPA: 8.5</div>
+                <p><strong>Relevant Coursework:</strong> AI, OOPS, Operating Systems, DSA, Design and Analysis of Algorithms, DBMS.</p>
+                <p style="padding: 15px; background: rgba(191, 149, 63, 0.05); border-left: 2px solid var(--gold-dark); border-radius: 4px;">
                     <strong>Excellence Award Recipient (May 2024):</strong> Recognized by the School of Computing for outstanding contributions to Entrepreneurship, Management, and Startups.
                 </p>
-            </div>
-            
-            <div class="crevice-card">
-                <h2 class="section-title">Technical Arsenal</h2>
-                <p><strong>Architecture:</strong> Python, C++, React JS, JavaScript, HTML/CSS+</p>
-                <p><strong>Design & Simulation:</strong> AutoCAD, Figma, Blender, Unity3D, MATLAB</p>
-                <p><strong>Specializations:</strong> Offensive Security, Cloud Architecture, Human-Resource Management</p>
+                
+                <br>
+                <div class="job-title">System Capabilities</div>
+                <ul>
+                    <li><span class="highlight-gold">Programming:</span> Python3, C, C++, HTML, CSS, JavaScript, React JS, Offensive Security.</li>
+                    <li><span class="highlight-gold">Design & Modeling:</span> AutoCAD, Figma, MATLAB, Microsoft Office, Blender, Unity3D.</li>
+                    <li><span class="highlight-gold">Certifications:</span> Google Data Analytics, Google Foundations of Project Management, IBM Introduction to Cloud Computing, Erasmus Serious Gaming.</li>
+                </ul>
             </div>
         </div>
     </div>
@@ -200,7 +276,7 @@
                 content.style.opacity = '1';
             }, 1500);
 
-            // Injects your YouTube video dynamically so it bypasses autoplay blockers
+            // Injects YouTube video dynamically
             const iframe = document.createElement('iframe');
             iframe.style.display = 'none';
             iframe.src = "https://www.youtube.com/embed/glhfnCIGfj0?autoplay=1&loop=1&playlist=glhfnCIGfj0";
