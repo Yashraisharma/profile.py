@@ -1,143 +1,176 @@
 import streamlit as st
 
 # --- PAGE SETUP ---
-st.set_page_config(page_title="Yash Rai Sharma | Portfolio", layout="wide")
+st.set_page_config(page_title="Yash Rai Sharma | Profile", layout="wide")
 
-# --- ADVANCED UI/UX CSS ---
+# --- KVS STYLE CSS ---
 st.markdown("""
     <style>
-    /* Professional Color Palette & Fonts */
-    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap');
-    
-    * { font-family: 'Plus Jakarta Sans', sans-serif; }
-
-    .stApp {
-        background-color: #ffffff;
+    /* KVS Corporate Color Palette */
+    :root {
+        --kvs-navy: #1a365d;
+        --kvs-gold: #c0a062;
+        --kvs-text: #333333;
     }
 
-    /* Hero Section */
-    .hero-container {
-        padding: 5rem 2rem;
-        background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
-        border-radius: 0 0 50px 50px;
-        color: white;
-        text-align: center;
-        margin-bottom: 4rem;
-    }
+    .stApp { background-color: #ffffff; }
 
-    .hero-title { font-size: 3.5rem; font-weight: 800; margin-bottom: 1rem; }
-    .hero-subtitle { font-size: 1.25rem; opacity: 0.9; font-weight: 400; }
-
-    /* Service/Competency Cards */
-    .card-container {
+    /* Top Navigation Simulation */
+    .top-nav {
+        background-color: var(--kvs-navy);
+        padding: 10px 50px;
         display: flex;
-        gap: 20px;
-        margin-bottom: 3rem;
+        justify-content: space-between;
+        color: white;
+        font-weight: 600;
+        border-bottom: 4px solid var(--kvs-gold);
     }
 
-    .ux-card {
-        background: #f8fafc;
-        padding: 2.5rem;
-        border-radius: 24px;
-        border: 1px solid #e2e8f0;
-        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    /* Hero Branding Section */
+    .hero-brand {
+        padding: 40px 10% 20px 10%;
+        background-color: white;
     }
 
-    .ux-card:hover {
-        transform: translateY(-12px);
-        background: white;
-        border-color: #3b82f6;
-        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    .name-title {
+        font-size: 42px;
+        font-weight: 800;
+        color: var(--kvs-navy);
+        text-transform: uppercase;
+        margin-bottom: 0px;
     }
 
-    .card-icon { font-size: 2.5rem; margin-bottom: 1.5rem; display: block; }
-    .card-title { font-size: 1.5rem; font-weight: 700; color: #1e293b; margin-bottom: 1rem; }
-    .card-text { color: #64748b; line-height: 1.6; }
+    .sub-title {
+        color: var(--kvs-gold);
+        font-size: 18px;
+        letter-spacing: 2px;
+        font-weight: 700;
+        margin-top: -5px;
+    }
 
-    /* Success/Achievement Banner */
-    .stat-banner {
-        background: #f1f5f9;
-        padding: 2rem;
-        border-radius: 20px;
+    /* Destination/Service Blocks (The KVS Look) */
+    .service-block {
+        border: 1px solid #eeeeee;
+        padding: 30px;
+        background-color: #fdfdfd;
+        border-top: 5px solid var(--kvs-navy);
+        height: 100%;
+    }
+
+    .service-block:hover {
+        border-top: 5px solid var(--kvs-gold);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    }
+
+    .block-header {
+        color: var(--kvs-navy);
+        font-size: 22px;
+        font-weight: 700;
+        margin-bottom: 15px;
+    }
+
+    /* CTA Section */
+    .cta-strip {
+        background-color: var(--kvs-navy);
+        color: white;
+        padding: 40px;
         text-align: center;
-        border-left: 10px solid #3b82f6;
-        margin-top: 2rem;
+        margin-top: 50px;
     }
 
-    /* Hide Streamlit Branding */
-    #MainMenu {visibility: hidden;}
-    footer {visibility: hidden;}
-    header {visibility: hidden;}
+    /* Typography */
+    h2 { color: var(--kvs-navy) !important; font-weight: 700 !important; }
+    p { color: #555555; line-height: 1.8; }
+
+    /* Buttons */
+    .stButton>button {
+        background-color: var(--kvs-gold) !important;
+        color: white !important;
+        border: none !important;
+        border-radius: 0px !important;
+        padding: 10px 30px !important;
+    }
+
+    /* Hide Streamlit elements */
+    #MainMenu, footer, header {visibility: hidden;}
     </style>
     """, unsafe_allow_html=True)
 
-# --- HERO SECTION ---
-st.markdown(f"""
-    <div class="hero-container">
-        <div class="hero-title">Yash Rai Sharma</div>
-        <div class="hero-subtitle">Senior Growth Content Engineer & Software Professional</div>
-        <div style="margin-top: 20px; opacity: 0.8;">📍 Hyderabad, India</div>
-    </div>
-    """, unsafe_allow_html=True)
-
-# --- ABOUT SECTION ---
-col1, col2 = st.columns([2, 1])
-with col1:
-    st.header("Strategic Growth Architecture")
-    st.write("""
-        Highly analytical Growth Engineer with a background in Software Engineering. 
-        I specialize in bridging the gap between complex technical infrastructure and 
-        high-velocity marketing growth.
-    """)
-    st.write("""
-        Currently serving as an **Assistant Growth Manager at Apollo 247**, I lead 
-        marketing automation experiments and technical integrations that scale.
-    """)
-
-# --- COMPETENCIES (CARD UI) ---
-st.markdown("<br><br>", unsafe_allow_html=True)
-c1, c2, c3 = st.columns(3)
-
-with c1:
-    st.markdown("""
-        <div class="ux-card">
-            <span class="card-icon">⚙️</span>
-            <div class="card-title">Technical Stack</div>
-            <div class="card-text">Python, SQL, and Google Apps Script. Mastery in CleverTap & Segment API integrations.</div>
-        </div>
-    """, unsafe_allow_html=True)
-
-with c2:
-    st.markdown("""
-        <div class="ux-card">
-            <span class="card-icon">🚀</span>
-            <div class="card-title">Growth Strategy</div>
-            <div class="card-text">Lifecycle experiments across WhatsApp, SMS, and Push Notification triggers.</div>
-        </div>
-    """, unsafe_allow_html=True)
-
-with c3:
-    st.markdown("""
-        <div class="ux-card">
-            <span class="card-icon">🤖</span>
-            <div class="card-title">AI Implementation</div>
-            <div class="card-text">Utilizing Flash 3 models for high-velocity content generation and prompt engineering.</div>
-        </div>
-    """, unsafe_allow_html=True)
-
-# --- ACHIEVEMENTS ---
-st.markdown("<br>", unsafe_allow_html=True)
+# --- HEADER SIMULATION ---
 st.markdown("""
-    <div class="stat-banner">
-        <h3 style="margin-bottom:5px; color:#1e3a8a;">48,000+ Users Managed</h3>
-        <p style="color:#475569; margin:0;">Real-time data synchronization infrastructure built with 70% reduction in manual overhead.</p>
+    <div class="top-nav">
+        <div>YASH RAI SHARMA</div>
+        <div>GROWTH • ENGINEERING • SOFTWARE</div>
     </div>
     """, unsafe_allow_html=True)
 
-# --- FOOTER ---
+# --- HERO BRANDING ---
+st.markdown("""
+    <div class="hero-brand">
+        <div class="name-title">YASH RAI SHARMA</div>
+        <div class="sub-title">SENIOR GROWTH CONTENT ENGINEER</div>
+    </div>
+    """, unsafe_allow_html=True)
+
+# --- MAIN PROFILE BODY ---
+container = st.container()
+with container:
+    col1, col2 = st.columns([2, 1], gap="large")
+    
+    with col1:
+        st.header("Professional Overview")
+        st.write("""
+            Based in **Hyderabad**, I am a high-impact Growth Engineer with a solid foundation in **Software Engineering**. 
+            My expertise lies in the intersection of technical infrastructure and marketing velocity.
+        """)
+        st.write("""
+            Currently, as an **Assistant Growth Manager at Apollo 247**, I manage mission-critical 
+            marketing automation and data synchronization projects that drive user retention and acquisition at scale.
+        """)
+        
+    with col2:
+        st.header("Quick Contact")
+        st.write("📞 Request Callback")
+        st.write("📧 your.email@example.com")
+        st.button("BOOK CONSULTATION")
+
 st.markdown("<br><br>", unsafe_allow_html=True)
-st.divider()
-f1, f2, f3 = st.columns(3)
-with f1: st.button("LinkedIn")
-with f2: st.button("GitHub")
-with f3: st.button("Email Me")
+
+# --- THE "KVS STYLE" GRID ---
+st.header("Areas of Specialization")
+grid_col1, grid_col2, grid_col3 = st.columns(3)
+
+with grid_col1:
+    st.markdown("""
+        <div class="service-block">
+            <div class="block-header">ENGINEERING</div>
+            <p>Advanced Python automation and Google Apps Script workflows. 
+            Specializing in complex API syncs for 48,000+ user databases.</p>
+        </div>
+    """, unsafe_allow_html=True)
+
+with grid_col2:
+    st.markdown("""
+        <div class="service-block">
+            <div class="block-header">GROWTH STRATEGY</div>
+            <p>Lifecycle marketing via CleverTap and Segment. 
+            Optimizing triggers across WhatsApp, SMS, and Push notifications.</p>
+        </div>
+    """, unsafe_allow_html=True)
+
+with grid_col3:
+    st.markdown("""
+        <div class="service-block">
+            <div class="block-header">AI INTEGRATION</div>
+            <p>Leveraging Flash 3 models for precision content engineering 
+            and automated marketing experiment generation.</p>
+        </div>
+    """, unsafe_allow_html=True)
+
+# --- FOOTER CTA ---
+st.markdown("""
+    <div class="cta-strip">
+        <h2>Let's Scale Your Growth Engine</h2>
+        <p>Available for technical consulting and growth strategy audits.</p>
+    </div>
+    """, unsafe_allow_html=True)
