@@ -11,6 +11,7 @@
             --gold-light: #fcf6ba;
             --gold-mid: #bf953f;
             --gold-dark: #b38728;
+            --cream: #fffdd0; /* New creamy accent */
             --black-rock: #050505;
         }
 
@@ -48,9 +49,12 @@
 
         .gate-subtext {
             font-family: 'Montserrat', sans-serif; font-size: 0.8rem; letter-spacing: 4px;
-            color: var(--gold-mid); text-transform: uppercase; margin-top: 20px;
-            opacity: 0.6; font-weight: 300;
+            color: var(--cream); /* Creamy color applied here */
+            text-transform: uppercase; margin-top: 20px;
+            opacity: 0.7; font-weight: 300; transition: opacity 0.3s ease;
         }
+
+        #entry-gate:hover .gate-subtext { opacity: 1; }
 
         @keyframes breathe { 0%, 100% { opacity: 0.3; transform: scale(0.98); } 50% { opacity: 1; transform: scale(1.02); } }
 
@@ -118,7 +122,7 @@
         ul { margin-left: 20px; color: #e0e0e0; margin-bottom: 25px; line-height: 1.8; }
         li { margin-bottom: 12px; font-size: 1rem; }
 
-        .project-block { margin-bottom: 50px; border-bottom: 1px hidden rgba(255,255,255,0.1); padding-bottom: 20px; }
+        .project-block { margin-bottom: 50px; }
 
         @media (max-width: 768px) {
             .contact-bar { flex-direction: column; gap: 10px; }
@@ -167,57 +171,50 @@
                 
                 <p><strong>WORK DONE:</strong></p>
                 <ul>
-                    <li><strong>App & Web Content Management:</strong> Managed frontend content for mobile and web platforms using <span class="highlight-gold">Contentful, Magento, and basic JavaScript</span>. Handled the technical deployment cycle through Jenkins, Jira, and Magento to ensure seamless updates and live site stability.</li>
-                    <li><strong>User Experience Strategy:</strong> Determined page layouts and content visibility based on user intent. Managed the categorization of high-traffic segments—including Homepage, Diagnostics, Pharma, and FMCG—to show the user specific products based on their interaction and segment.</li>
-                    <li><strong>Internal Product Development:</strong> Helped the Tech Product team by working closely with them to build a dedicated application from the ground up for internal personnel management, streamlining how the organization tracks and manages its workforce.</li>
-                    <li><strong>Apollo Advisor Program (Scale & Operations):</strong> Co-headed a <span class="highlight-gold">150-member team</span> as one of two primary leads. Personally managed the hiring and training of almost every individual on the team, successfully launching them into pharmacy stores to drive customer advisory and loyalty programs.</li>
-                    <li><strong>Internal Pharmacy Competition:</strong> Co-managed an internal reward-based program that established a competitive structure across the Apollo Pharmacy group, where individual stores competed for incentive-based rewards based on performance.</li>
-                    <li><strong>CRM & Lifecycle Marketing:</strong> Worked as a part of the CRM team to manage data and executed SMS, WhatsApp, and Push Notification campaigns targeted at specific audiences based on user segments and behavioral data using <span class="highlight-gold">CleverTap, Karix, and VI</span>.</li>
+                    <li><strong>App & Web Content Management:</strong> Managed frontend content for mobile and web platforms using <span class="highlight-gold">Contentful, Magento, and basic JavaScript</span>. Handled technical deployment cycles via Jenkins and Jira to ensure live site stability.</li>
+                    <li><strong>User Experience Strategy:</strong> Determined page layouts and content visibility based on user intent. Managed categorization for high-traffic segments based on user interaction data.</li>
+                    <li><strong>Internal Product Development:</strong> Helped the Tech Product team build a dedicated application from the ground up for internal personnel management, streamlining workforce tracking.</li>
+                    <li><strong>Apollo Advisor Program (Scale & Operations):</strong> Co-headed a <span class="highlight-gold">150-member team</span>. Managed the hiring and training of almost every individual on the team, launching pharmacy store customer advisory programs.</li>
+                    <li><strong>Internal Pharmacy Competition:</strong> Co-managed an internal reward-based program establishing competitive performance structures across the Apollo Pharmacy group.</li>
+                    <li><strong>CRM & Lifecycle Marketing:</strong> Executed SMS, WhatsApp, and Push Notification campaigns targeted at specific audiences using <span class="highlight-gold">CleverTap, Karix, and VI</span>.</li>
                 </ul>
 
-                <div class="job-title" style="margin-top:50px;">Director & Co-Founder @VecTech Consulting Private Limited, Hyderabad, TS</div>
-                <div class="job-meta">Apr 2023 - Present</div>
-                <p>Actively served since April 2023, contributing to the company's operations and working processes. My experience within my father's company has equipped me with essential management and critical thinking skills, furthering the company's direction and success.</p>
-                <ul>
-                    <li><strong>Technical Leadership:</strong> Conducive in the development of speech recognition software and the implementation of business ERP solutions. Facilitated communication among team members and ensured project milestones were met.</li>
-                    <li><strong>Freelance Management:</strong> Managed a freelance team to complete over <span class="highlight-gold">6 web development projects</span>. Oversaw the entire process from work procurement to client dealings and team coordination, ensuring successful delivery and client satisfaction.</li>
-                </ul>
+                <div class="job-title" style="margin-top:50px;">Director & Co-Founder @VecTech Consulting Private Limited</div>
+                <div class="job-meta">Hyderabad, TS | Apr 2023 - Present</div>
+                <p>Contributing to strategic operations and high-level management. Conducive in the development of speech recognition software and the implementation of business ERP solutions. Managed a freelance team to complete over <span class="highlight-gold">6 web development projects</span>, overseeing procurement, client dealings, and team coordination.</p>
             </div>
 
-            <!-- OTHER WORK EXPERIENCE -->
+            <!-- CORPORATE DEPLOYMENT -->
             <div class="crevice-card">
-                <h2 class="section-title">Corporate Deployment</h2>
-                
+                <h2 class="section-title">Corporate Internships</h2>
                 <div class="job-title">Cyber Security Intern | Allvy Software Solutions</div>
                 <div class="job-meta">Feb 2024</div>
-                <p>Actively involved in handling <span class="highlight-gold">government tenders</span> focused on establishing Security Operations Centers (SOCs) and Cyber Network Operations Centers (C-NOCs). Gained understanding of technical and operational aspects of SOC and C-NOC setups.</p>
+                <p>Involved in handling <span class="highlight-gold">government tenders</span> for establishing Security Operations Centers (SOCs) and Cyber Network Operations Centers (C-NOCs). Gained practical insights into the technical and operational aspects of critical cybersecurity infrastructure.</p>
 
-                <div class="job-title" style="margin-top:40px;">Application Development Engineer Intern | HappiApps, Chennai, TN</div>
+                <div class="job-title" style="margin-top:40px;">Application Development Engineer Intern | HappiApps</div>
                 <div class="job-meta">Aug 2022 – Jan 2023</div>
-                <p>Specializing as a UI/UX and front-end engineer, I acquired essential insights into effective collaboration and project execution methodologies. Gained practical software development experience across multiple projects.</p>
+                <p>Specialized as a UI/UX and front-end engineer across multiple projects, gaining insights into effective collaboration and project execution methodologies.</p>
             </div>
 
             <!-- LEADERSHIP -->
             <div class="crevice-card">
                 <h2 class="section-title">Leadership & Engagement</h2>
-                
-                <div class="job-title">Core-Quantum Lead | Quantum Computing Lab SRM, Chennai, TN</div>
+                <div class="job-title">Core-Quantum Lead | Quantum Computing Lab SRM</div>
                 <div class="job-meta">Mar 2023 – Oct 2023</div>
-                <p>Lead a dynamic team of over <span class="highlight-gold">50 members</span>. Drove innovative ideas and fostered strategic partnerships to enhance club potential, securing sponsorships and procuring professors for enriched learning.</p>
+                <p>Led a dynamic team of over <span class="highlight-gold">50 members</span> in research and development. Secured sponsorships and procured professors to enrich the learning experiences of club members.</p>
 
-                <div class="job-title" style="margin-top:40px;">VP & Industry Relations Head | CodeChamps Lab SRM, Chennai, TN</div>
+                <div class="job-title" style="margin-top:40px;">VP & Industry Relations Head | CodeChamps Lab SRM</div>
                 <div class="job-meta">Jan 2023 – Feb 2023</div>
-                <p>Collaborated with more than five industry experts to mentor club members. Organized workshops, talks, and collaborative projects to broaden horizons and foster connections between academia and industry.</p>
+                <p>Facilitated involvement of industry experts in mentoring club members through workshops, talks, and collaborative projects, bridging the gap between academia and industry.</p>
 
-                <div class="job-title" style="margin-top:40px;">Events Director & Technology Mentor | Cherry Network +</div>
+                <div class="job-title" style="margin-top:40px;">Events Director | Cherry Network +</div>
                 <div class="job-meta">Nov 2022 – Sep 2023</div>
-                <p>Overseeing the planning and execution of events ranging from large-scale gatherings to micro gatherings. Later transitioned into a mentorship role to guide peers toward better management of the club.</p>
+                <p>Overseeing the planning and execution of events ranging from large-scale gatherings to micro gatherings. Mentored peers on effective strategies for event planning and network growth.</p>
             </div>
 
             <!-- PROJECTS -->
             <div class="crevice-card">
                 <h2 class="section-title">Technical Projects</h2>
-                
                 <div class="project-block">
                     <div class="job-title">Heart Attack Prediction System</div>
                     <p><strong>Objective:</strong> Predict heart attack probability beforehand using A.I. to give doctors indicators for necessary precautions and treatments.</p>
@@ -226,14 +223,14 @@
 
                 <div class="project-block">
                     <div class="job-title">Pneumonia Detection System</div>
-                    <p><strong>Objective:</strong> Develop a reliable algorithm to analyze medical images and accurately identify bacterial and viral pneumonia cases across varying degrees of severity.</p>
-                    <p><strong>Solution:</strong> Developed a deep learning model using a large dataset of chest X-ray images, integrated into pneumonia detection software.</p>
+                    <p><strong>Objective:</strong> Develop an accurate algorithm to distinguish between bacterial and viral pneumonia via medical image analysis.</p>
+                    <p><strong>Solution:</strong> Developed a deep learning model integrated into detection software, developed by preparing a large dataset of chest X-ray images.</p>
                 </div>
 
                 <div class="project-block">
-                    <div class="job-title">SRM NAV System VR/AR</div>
+                    <div class="job-title">SRM NAV System (VR/AR)</div>
                     <p><strong>Objective:</strong> Implement an optimized navigation system using VR headsets to guide users along the fastest route within SRM infrastructure.</p>
-                    <p><strong>Solution:</strong> Leveraged <span class="highlight-gold">Blender</span> for infrastructure modeling and Kruskal's algorithm via <span class="highlight-gold">Unity</span> for optimal route determination.</p>
+                    <p><strong>Solution:</strong> Leveraged <span class="highlight-gold">Blender</span> for infrastructure modeling and applying Kruskal's algorithm via <span class="highlight-gold">Unity</span> for real-time navigation.</p>
                 </div>
 
                 <div class="project-block">
@@ -243,26 +240,22 @@
                 </div>
             </div>
 
-            <!-- EDUCATION & SKILLS -->
+            <!-- EDUCATION -->
             <div class="crevice-card">
-                <h2 class="section-title">Academic Profile</h2>
-                <div class="job-title">SRM Institute of Science and Technology, Chennai, TN</div>
+                <h2 class="section-title">Academia & Arsenal</h2>
+                <div class="job-title">SRM Institute of Science and Technology, Chennai</div>
                 <div class="job-meta">B.Tech, CSE w/s Software Engineering | May 2024 | CGPA: 8.5</div>
-                <p><strong>Relevant Coursework:</strong> AI, OOPS, Operating Systems, Data Structures and Algorithms, Design and Analysis of Algorithms, DBMS.</p>
-
-                <div class="job-title" style="margin-top:30px;">FIITJEE Junior College, Saifabad</div>
-                <div class="job-meta">Intermediate (+1 & +2) | June 2020 | Percentage: 71%</div>
-
-                <p style="padding: 15px; background: rgba(191, 149, 63, 0.05); border-left: 2px solid var(--gold-dark); border-radius: 4px; margin-top: 25px;">
-                    <strong>Excellence Award Recipient (May 2024):</strong> School of Computing, SRM. Recognized for outstanding contributions to Entrepreneurship, Management, and Startups.
+                
+                <p style="padding: 15px; background: rgba(191, 149, 63, 0.05); border-left: 2px solid var(--gold-dark); border-radius: 4px; margin-bottom: 30px;">
+                    <strong>Excellence Award Recipient (May 2024):</strong> Recognized for outstanding contributions to Entrepreneurship, Management, and Startups.
                 </p>
 
-                <div class="job-title" style="margin-top:40px;">Technical Skills</div>
+                <div class="job-title">Technical Arsenal</div>
                 <ul>
-                    <li><span class="highlight-gold">Programming:</span> Python3, C, C++, HTML CSS+, JavaScript, React JS, Offensive Security.</li>
-                    <li><span class="highlight-gold">CRM & Growth:</span> CleverTap, Karix, VI, Contentful, Magento, Jenkins, Jira.</li>
-                    <li><span class="highlight-gold">Design & Modeling:</span> AutoCAD, Figma, MATLAB, Microsoft Office, Blender, Unity3.</li>
-                    <li><span class="highlight-gold">Certifications:</span> Google Data Analytics, Google Project Mgmt, IBM Cloud Computing, Erasmus Serious Gaming.</li>
+                    <li><span class="highlight-gold">Programming:</span> Python3, C, C++, HTML, CSS+, JavaScript, React JS, Offensive Security.</li>
+                    <li><span class="highlight-gold">Growth Tech:</span> CleverTap, Karix, VI, Contentful, Magento, Jenkins, Jira.</li>
+                    <li><span class="highlight-gold">Design:</span> AutoCAD, Figma, MATLAB, Blender, Unity3D.</li>
+                    <li><span class="highlight-gold">Certifications:</span> Google Data Analytics, Google Project Mgmt, IBM Cloud, Erasmus Serious Gaming.</li>
                 </ul>
             </div>
         </div>
@@ -308,18 +301,17 @@
                 setTimeout(() => { content.style.opacity = '1'; }, 50); 
             }, 1500);
 
-            // FILENAME: BG.mp3.mp3
             const audio = new Audio('BG.mp3.mp3');
             audio.loop = true;
             audio.volume = 0.5;
-            audio.play().catch(e => console.log("Audio trigger confirmed."));
+            audio.play().catch(e => console.log("Interaction required"));
         }
 
         document.addEventListener("DOMContentLoaded", () => {
             const cards = document.querySelectorAll('.crevice-card');
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
-            }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
+            }, { threshold: 0.1, rootMargin: "0px 0px -20px 0px" });
             cards.forEach(card => observer.observe(card));
         });
     </script>
