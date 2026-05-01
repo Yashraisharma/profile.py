@@ -3,102 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yash Rai Sharma | Project Abyss</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Cinzel:wght@700&display=swap');
-        
-        :root { --green: #00ff41; --bg: #050505; }
-        
-        body, html { 
-            margin: 0; padding: 0; background: var(--bg); 
-            color: var(--green); font-family: 'Space Mono', monospace; 
-            overflow-x: hidden; height: 100%;
-        }
-
-        /* CRT Scanline Effect */
-        body::before {
-            content: " "; display: block; position: fixed; inset: 0;
-            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), 
-                        linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
-            z-index: 2001; background-size: 100% 4px, 3px 100%; pointer-events: none;
-        }
-
-        /* Entry Gate */
-        #gate {
-            position: fixed; inset: 0; background: #000; z-index: 3000;
-            display: flex; align-items: center; justify-content: center;
-            cursor: pointer; text-align: center;
-        }
-
-        .pulse { animation: pulse 2s infinite; letter-spacing: 8px; }
-        @keyframes pulse { 0%, 100% { opacity: 0.3; } 50% { opacity: 1; } }
-
-        /* Main Content (Hidden Initially) */
-        #content { display: none; padding: 20px; opacity: 0; transition: opacity 2s ease; }
-
-        .countdown { height: 80vh; display: flex; flex-direction: column; align-items: center; justify-content: center; }
-        .timer { font-size: clamp(2rem, 10vw, 7rem); font-weight: 700; text-shadow: 0 0 15px var(--green); }
-        
-        .crevice { 
-            max-width: 800px; margin: 40px auto; padding: 30px; 
-            border: 1px solid var(--green); background: rgba(0, 255, 65, 0.02); 
-        }
-        
-        .label { border-bottom: 1px solid var(--green); margin-bottom: 15px; display: inline-block; font-weight: 700; }
-        h1 { color: #fff; margin-top: 20px; }
-    </style>
+    <title>Yash Rai Sharma | Technical Ascent</title>
+    <!-- Link to your styles -->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div id="gate" onclick="start()">
-        <h2 class="pulse">INITIALIZE DESCEND</h2>
+    <!-- The Gate: This is what you see first -->
+    <div id="gate" onclick="beginAscent()">
+        <h2 class="pulse">BEGIN ASCENT</h2>
     </div>
 
+    <!-- The Content: Hidden until you click -->
     <div id="content">
-        <div class="countdown">
+        <div class="countdown-container">
             <div id="timer" class="timer">00:00:00:00</div>
-            <div style="font-family: 'Cinzel'; opacity: 0.6; letter-spacing: 5px;">DAYS : HRS : MIN : SEC</div>
-            <h1>YASH RAI SHARMA</h1>
-            <p style="opacity: 0.6;">UPSC 2026 ASPIRANT | TECHNOCRAT</p>
+            <div class="timer-label">DAYS : HRS : MIN : SEC</div>
+            <h1 class="main-title">YASH RAI SHARMA</h1>
+            <p class="subtitle">UPSC 2026 ASPIRANT | TECHNOCRAT | ENGINEER</p>
         </div>
 
         <div class="crevice">
-            <div class="label">SUMMARY</div>
-            <p>Technocrat with bases in Software development, Quantum Computing, AR/VR and Cyber Security. Currently focused on finishing the UPSC syllabus by May 2026.</p>
+            <div class="label">MISSION PROFILE</div>
+            <p>Technocrat with bases in **Software Development, Quantum Computing, AR/VR and Cyber Security**. Currently focused on the UPSC 2026 objective and finishing the syllabus by May 2026.</p>
         </div>
 
         <div class="crevice">
-            <div class="label">ACTIVE DEPLOYMENT: VECHTECH</div>
-            <p><b>Director | VechTech Consulting | Apr 2023 - Present</b></p>
-            <p>Facilitated development of speech recognition software and business ERP solutions. Managed a freelance team to complete over 6 web development projects.</p>
+            <div class="label">ACTIVE DEPLOYMENT</div>
+            <p><strong>Director | VechTech Consulting Private Limited | Apr 2023 - Present</strong></p>
+            <p>Facilitated development of speech recognition software and ERP solutions. Managed a freelance team to successfully deliver over 6 web development projects.</p>
         </div>
     </div>
 
-    <script>
-        // FAIL-SAFE START FUNCTION
-        function start() {
-            document.getElementById('gate').style.display = 'none';
-            const content = document.getElementById('content');
-            content.style.display = 'block';
-            setTimeout(() => { content.style.opacity = '1'; }, 10);
-            
-            // Audio Trigger
-            const audio = new Audio('https://www.soundjay.com/nature/ocean-wave-1.mp3');
-            audio.loop = true;
-            audio.play().catch(e => console.log("Audio skipped"));
-        }
-
-        // FAIL-SAFE TIMER
-        const target = new Date("May 20, 2026 00:00:00").getTime();
-        setInterval(() => {
-            const now = new Date().getTime();
-            const diff = target - now;
-            const d = Math.floor(diff / (1000 * 60 * 60 * 24));
-            const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-            const s = Math.floor((diff % (1000 * 60)) / 1000);
-            document.getElementById('timer').innerText = `${d}:${h}:${m}:${s}`;
-        }, 1000);
-    </script>
+    <!-- Link to your logic -->
+    <script src="script.js"></script>
 </body>
 </html>
