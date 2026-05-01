@@ -1,68 +1,143 @@
 import streamlit as st
 
-# --- PAGE CONFIG ---
-st.set_page_config(page_title="Yash Rai Sharma | Portfolio", page_icon="👤", layout="centered")
+# --- PAGE SETUP ---
+st.set_page_config(page_title="Yash Rai Sharma | Portfolio", layout="wide")
 
-# --- UI STYLING ---
+# --- ADVANCED UI/UX CSS ---
 st.markdown("""
     <style>
-    .main { background-color: #0f172a; }
-    h1 { color: #38bdf8; font-weight: 700; }
-    h2 { color: #818cf8; border-bottom: 1px solid #334155; padding-bottom: 10px; }
-    .stMarkdown { line-height: 1.6; }
+    /* Professional Color Palette & Fonts */
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap');
+    
+    * { font-family: 'Plus Jakarta Sans', sans-serif; }
+
+    .stApp {
+        background-color: #ffffff;
+    }
+
+    /* Hero Section */
+    .hero-container {
+        padding: 5rem 2rem;
+        background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+        border-radius: 0 0 50px 50px;
+        color: white;
+        text-align: center;
+        margin-bottom: 4rem;
+    }
+
+    .hero-title { font-size: 3.5rem; font-weight: 800; margin-bottom: 1rem; }
+    .hero-subtitle { font-size: 1.25rem; opacity: 0.9; font-weight: 400; }
+
+    /* Service/Competency Cards */
+    .card-container {
+        display: flex;
+        gap: 20px;
+        margin-bottom: 3rem;
+    }
+
+    .ux-card {
+        background: #f8fafc;
+        padding: 2.5rem;
+        border-radius: 24px;
+        border: 1px solid #e2e8f0;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .ux-card:hover {
+        transform: translateY(-12px);
+        background: white;
+        border-color: #3b82f6;
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    }
+
+    .card-icon { font-size: 2.5rem; margin-bottom: 1.5rem; display: block; }
+    .card-title { font-size: 1.5rem; font-weight: 700; color: #1e293b; margin-bottom: 1rem; }
+    .card-text { color: #64748b; line-height: 1.6; }
+
+    /* Success/Achievement Banner */
+    .stat-banner {
+        background: #f1f5f9;
+        padding: 2rem;
+        border-radius: 20px;
+        text-align: center;
+        border-left: 10px solid #3b82f6;
+        margin-top: 2rem;
+    }
+
+    /* Hide Streamlit Branding */
+    #MainMenu {visibility: hidden;}
+    footer {visibility: hidden;}
+    header {visibility: hidden;}
     </style>
     """, unsafe_allow_html=True)
 
-# --- HEADER / BIO ---
-st.title("Yash Rai Sharma")
-st.write("### Senior Growth Content Engineer & Software Professional")
-st.write("📍 Hyderabad, India")
+# --- HERO SECTION ---
+st.markdown(f"""
+    <div class="hero-container">
+        <div class="hero-title">Yash Rai Sharma</div>
+        <div class="hero-subtitle">Senior Growth Content Engineer & Software Professional</div>
+        <div style="margin-top: 20px; opacity: 0.8;">📍 Hyderabad, India</div>
+    </div>
+    """, unsafe_allow_html=True)
 
-st.info("""
-Highly analytical Growth Engineer with a background in Software Engineering. 
-I specialize in bridging the gap between complex technical infrastructure and 
-high-velocity marketing growth.
-""")
-
-# --- EXPERIENCE SECTION ---
-st.header("Professional Profile")
-st.write("""
-Currently serving as an **Assistant Growth Manager at Apollo 247**, I lead 
-marketing automation experiments and technical integrations that scale. 
-My work focuses on optimizing user lifecycles through precise data synchronization 
-and AI-driven content strategies.
-""")
-
-# --- SKILL MATRIX ---
-st.header("Core Competencies")
-col1, col2 = st.columns(2)
-
+# --- ABOUT SECTION ---
+col1, col2 = st.columns([2, 1])
 with col1:
-    st.subheader("Technical Stack")
-    st.write("- **Languages:** Python, SQL, Google Apps Script")
-    st.write("- **Platforms:** CleverTap, Segment, GitHub")
-    st.write("- **AI/ML:** Flash 3 Implementation, LLM Prompt Engineering")
+    st.header("Strategic Growth Architecture")
+    st.write("""
+        Highly analytical Growth Engineer with a background in Software Engineering. 
+        I specialize in bridging the gap between complex technical infrastructure and 
+        high-velocity marketing growth.
+    """)
+    st.write("""
+        Currently serving as an **Assistant Growth Manager at Apollo 247**, I lead 
+        marketing automation experiments and technical integrations that scale.
+    """)
 
-with col2:
-    st.subheader("Growth Strategy")
-    st.write("- **Channels:** WhatsApp, SMS, Push Notification Triggers")
-    st.write("- **Analytics:** Funnel Optimization, User Segmentation")
-    st.write("- **Execution:** Automated Lifecycle Workflows")
+# --- COMPETENCIES (CARD UI) ---
+st.markdown("<br><br>", unsafe_allow_html=True)
+c1, c2, c3 = st.columns(3)
 
-# --- KEY HIGHLIGHTS ---
-st.header("Key Achievements")
-st.success("**Infrastructure:** Developed a Python ecosystem managing real-time data sync for 48,000+ users.")
-st.success("**Automation:** Built custom scripts to streamline growth experiments, reducing manual overhead by 70%.")
+with c1:
+    st.markdown("""
+        <div class="ux-card">
+            <span class="card-icon">⚙️</span>
+            <div class="card-title">Technical Stack</div>
+            <div class="card-text">Python, SQL, and Google Apps Script. Mastery in CleverTap & Segment API integrations.</div>
+        </div>
+    """, unsafe_allow_html=True)
+
+with c2:
+    st.markdown("""
+        <div class="ux-card">
+            <span class="card-icon">🚀</span>
+            <div class="card-title">Growth Strategy</div>
+            <div class="card-text">Lifecycle experiments across WhatsApp, SMS, and Push Notification triggers.</div>
+        </div>
+    """, unsafe_allow_html=True)
+
+with c3:
+    st.markdown("""
+        <div class="ux-card">
+            <span class="card-icon">🤖</span>
+            <div class="card-title">AI Implementation</div>
+            <div class="card-text">Utilizing Flash 3 models for high-velocity content generation and prompt engineering.</div>
+        </div>
+    """, unsafe_allow_html=True)
+
+# --- ACHIEVEMENTS ---
+st.markdown("<br>", unsafe_allow_html=True)
+st.markdown("""
+    <div class="stat-banner">
+        <h3 style="margin-bottom:5px; color:#1e3a8a;">48,000+ Users Managed</h3>
+        <p style="color:#475569; margin:0;">Real-time data synchronization infrastructure built with 70% reduction in manual overhead.</p>
+    </div>
+    """, unsafe_allow_html=True)
 
 # --- FOOTER ---
+st.markdown("<br><br>", unsafe_allow_html=True)
 st.divider()
-st.write("Connect with me to discuss growth engineering, marketing automation, or technical strategy.")
-
-# Social Buttons
-c1, c2, c3 = st.columns(3)
-with c1:
-    st.link_button("LinkedIn", "https://www.linkedin.com/in/YOUR_PROFILE") 
-with c2:
-    st.link_button("GitHub", "https://github.com/YOUR_USERNAME") 
-with c3:
-    st.link_button("Contact via Email", "mailto:your.email@example.com")
+f1, f2, f3 = st.columns(3)
+with f1: st.button("LinkedIn")
+with f2: st.button("GitHub")
+with f3: st.button("Email Me")
