@@ -1,99 +1,88 @@
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Montserrat:wght@300;400;600&display=swap');
+@import url('[https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Cinzel:wght@700&display=swap](https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Cinzel:wght@700&display=swap)');
 
 :root {
-    --gold: linear-gradient(180deg, #fcf6ba 0%, #bf953f 50%, #8a6d3b 100%);
-    --rock: #050505;
+    --terminal-green: #00ff41;
+    --dark-bg: #050505;
 }
 
-body, html { 
-    margin: 0; 
-    padding: 0; 
-    background: var(--rock); 
-    color: #d1d1d1; 
-    overflow-x: hidden; 
-    font-family: 'Montserrat', sans-serif; 
+body, html {
+    margin: 0;
+    padding: 0;
+    background: var(--dark-bg);
+    color: var(--terminal-green);
+    font-family: 'Space Mono', monospace;
+    overflow-x: hidden;
 }
 
-/* 3D Background */
-.abyss-bg {
+/* CRT Scanline Overlay */
+body::before {
+    content: " ";
+    display: block;
     position: fixed;
-    inset: 0;
-    z-index: -1;
-    background-image: 
-        radial-gradient(circle at center, rgba(0,0,0,0) 0%, rgba(0,0,0,0.9) 100%),
-        url('https://www.transparenttextures.com/patterns/dark-stone.png');
-    background-attachment: fixed;
+    top: 0; left: 0; bottom: 0; right: 0;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), 
+                linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+    z-index: 2001;
+    background-size: 100% 4px, 3px 100%;
+    pointer-events: none;
 }
 
-/* Entry Overlay */
-.entry-gate {
-    position: fixed;
-    inset: 0;
-    background: #000;
-    z-index: 2000;
+/* Countdown Container */
+.countdown-section {
+    height: 100vh;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    cursor: pointer;
-    transition: opacity 1.5s ease;
+    text-align: center;
 }
 
-.pulse-gold {
+.timer-digits {
+    font-size: clamp(3rem, 15vw, 10rem);
+    font-weight: 700;
+    letter-spacing: -5px;
+    text-shadow: 0 0 20px var(--terminal-green);
+}
+
+.timer-label {
     font-family: 'Cinzel', serif;
-    color: #bf953f;
-    letter-spacing: 12px;
-    font-size: 1.5rem;
-    animation: pulse 2s infinite;
+    font-size: 1rem;
+    letter-spacing: 10px;
+    opacity: 0.6;
+    margin-top: -20px;
 }
 
-@keyframes pulse {
-    0% { opacity: 0.3; text-shadow: 0 0 0px #bf953f; }
-    50% { opacity: 1; text-shadow: 0 0 20px #fcf6ba; }
-    100% { opacity: 0.3; text-shadow: 0 0 0px #bf953f; }
-}
-
-/* Content Branding */
-.hero { text-align: center; padding: 150px 20px; }
-.gold-title {
-    font-family: 'Cinzel', serif;
-    font-size: clamp(3rem, 15vw, 8.5rem);
-    background: var(--gold);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    letter-spacing: 15px;
-    filter: drop-shadow(0 10px 30px rgba(0,0,0,1));
-}
-
-/* 3D Rock Crevice Blocks */
+/* Resume Crevice (Hidden until Reveal) */
 .crevice {
     max-width: 900px;
     margin: 100px auto;
-    padding: 80px;
-    background: rgba(10, 10, 10, 0.9);
-    border-left: 3px solid #bf953f;
-    box-shadow: -30px 40px 80px rgba(0,0,0,0.9);
-    transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    padding: 60px;
+    border: 1px solid var(--terminal-green);
+    background: rgba(0, 255, 65, 0.03);
+    box-shadow: 0 0 20px rgba(0, 255, 65, 0.1);
+    transition: all 0.5s ease;
 }
 
 .crevice:hover {
-    transform: perspective(1500px) rotateY(-5deg) translateX(20px);
-    border-left-color: #fcf6ba;
+    background: rgba(0, 255, 65, 0.08);
+    box-shadow: 0 0 40px rgba(0, 255, 65, 0.2);
 }
 
-.label { 
-    font-family: 'Cinzel', serif; 
-    color: #bf953f; 
-    letter-spacing: 5px; 
-    margin-bottom: 30px; 
-    border-bottom: 1px solid rgba(191,149,63,0.3); 
-    display: inline-block; 
+.label {
+    border-bottom: 1px solid var(--terminal-green);
+    display: inline-block;
+    margin-bottom: 20px;
+    font-weight: 700;
 }
 
-.resume-text { 
-    line-height: 2.1; 
-    text-align: justify; 
-    font-size: 1.15rem; 
-    color: #b8b8b8; 
+/* Entry Overlay */
+.gate {
+    position: fixed;
+    inset: 0;
+    background: #000;
+    z-index: 3000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: crosshair;
 }
-
-.highlight { color: #fcf6ba; font-weight: 600; }
