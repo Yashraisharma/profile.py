@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yash Rai Sharma | Technocrat</title>
+    <title>Yash Rai Sharma | Executive Portfolio</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@300;400;700&display=swap');
 
@@ -11,194 +11,117 @@
             --gold-light: #fcf6ba;
             --gold-mid: #bf953f;
             --gold-dark: #b38728;
-            --black-rock: #0a0a0a;
+            --black-rock: #050505;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body, html {
             background-color: var(--black-rock);
             color: #fff;
             font-family: 'Montserrat', sans-serif;
             overflow-x: hidden;
-            scroll-behavior: smooth;
         }
 
-        /* 1. Black Rock & Gold Water Texture Background */
-        .ambient-background {
+        /* LIVE CANVAS BACKGROUND */
+        #fluid-canvas {
             position: fixed;
-            top: 0; left: 0; width: 100vw; height: 100vh;
-            background-color: #050505;
-            /* SVG Noise for Rock Texture */
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
             z-index: -2;
+            pointer-events: none;
         }
 
-        /* Moving Liquid Gold Gradient Orb */
-        .gold-glow {
-            position: fixed;
-            top: 50%; left: 50%;
-            width: 80vw; height: 80vh;
-            background: radial-gradient(circle, rgba(191,149,63,0.15) 0%, rgba(0,0,0,0) 70%);
-            transform: translate(-50%, -50%);
-            z-index: -1;
-            animation: pulse-glow 8s infinite alternate;
-        }
-
-        @keyframes pulse-glow {
-            0% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; }
-            100% { transform: translate(-50%, -50%) scale(1.2); opacity: 1; }
-        }
-
-        /* 2. The Gatekeeper (To activate audio legally) */
+        /* 2. The Gatekeeper (Required to start Audio) */
         #entry-gate {
-            position: fixed;
-            inset: 0;
-            background: #000;
-            z-index: 9999;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: opacity 1.5s ease, visibility 1.5s ease;
+            position: fixed; inset: 0; background: #000; z-index: 9999;
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer; transition: opacity 2s ease, visibility 2s ease;
         }
 
         .gate-text {
-            font-family: 'Cinzel', serif;
-            font-size: 2rem;
-            letter-spacing: 15px;
-            color: var(--gold-mid);
-            text-transform: uppercase;
+            font-family: 'Cinzel', serif; font-size: 2rem; letter-spacing: 15px;
+            color: var(--gold-mid); text-transform: uppercase;
             animation: breathe 3s infinite ease-in-out;
-            text-shadow: 0 0 20px rgba(191, 149, 63, 0.5);
+            text-shadow: 0 0 30px rgba(191, 149, 63, 0.8);
         }
 
-        @keyframes breathe {
-            0%, 100% { opacity: 0.4; }
-            50% { opacity: 1; }
-        }
+        @keyframes breathe { 0%, 100% { opacity: 0.3; transform: scale(0.98); } 50% { opacity: 1; transform: scale(1.02); } }
 
-        /* 3. Main Content & 3D Scrolling */
+        /* 3. Main Content */
         #main-content {
-            display: none; /* Hidden until entry */
-            opacity: 0;
-            transition: opacity 2s ease;
-            perspective: 1000px; /* Enables 3D space */
+            display: none; opacity: 0; transition: opacity 2s ease;
+            perspective: 1200px; /* Enhanced 3D space */
         }
 
-        .hero {
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 0 20px;
-        }
+        .hero { height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 0 20px; z-index: 10; }
 
         /* Liquid Gold Text Effect */
         .liquid-gold-text {
-            font-family: 'Cinzel', serif;
-            font-size: clamp(3rem, 8vw, 6rem);
-            font-weight: 700;
-            background: linear-gradient(45deg, var(--gold-dark), var(--gold-light), var(--gold-mid), var(--gold-light));
-            background-size: 300% 300%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: liquid-flow 6s ease infinite;
-            filter: drop-shadow(0px 10px 20px rgba(191,149,63,0.2));
-            margin-bottom: 20px;
-            letter-spacing: 5px;
+            font-family: 'Cinzel', serif; font-size: clamp(3rem, 8vw, 6.5rem); font-weight: 700;
+            background: linear-gradient(45deg, var(--gold-dark), #fff, var(--gold-mid), var(--gold-light));
+            background-size: 300% 300%; -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            animation: liquid-flow 5s ease infinite;
+            filter: drop-shadow(0px 15px 25px rgba(191,149,63,0.3)); margin-bottom: 20px; letter-spacing: 8px;
         }
 
-        @keyframes liquid-flow {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
+        @keyframes liquid-flow { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
 
-        .subtitle {
-            font-size: 1.2rem;
-            letter-spacing: 8px;
-            text-transform: uppercase;
-            color: #aaa;
-        }
+        .subtitle { font-size: 1.2rem; letter-spacing: 10px; text-transform: uppercase; color: #ccc; text-shadow: 0 5px 10px #000; }
 
-        /* 3D Scroll Cards */
-        .scroll-container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 100px 20px;
-        }
+        /* Enhanced 3D Scroll Cards */
+        .scroll-container { max-width: 900px; margin: 0 auto; padding: 50px 20px 150px 20px; }
 
         .crevice-card {
-            background: rgba(20, 20, 20, 0.6);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(191, 149, 63, 0.2);
-            border-left: 4px solid var(--gold-mid);
-            padding: 40px;
-            margin-bottom: 80px;
-            border-radius: 4px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+            background: rgba(10, 10, 10, 0.4); 
+            backdrop-filter: blur(20px); /* Heavy glassmorphism */
+            border: 1px solid rgba(191, 149, 63, 0.3); 
+            border-left: 5px solid var(--gold-mid);
+            padding: 50px; margin-bottom: 100px; border-radius: 8px; 
+            box-shadow: 0 30px 60px rgba(0,0,0,0.8), inset 0 0 20px rgba(191, 149, 63, 0.05);
             
-            /* Initial 3D State for Scroll Reveal */
-            opacity: 0;
-            transform: translateY(100px) rotateX(15deg);
-            transition: transform 1s cubic-bezier(0.25, 1, 0.5, 1), opacity 1s ease;
+            /* Aggressive 3D Starting State */
+            opacity: 0; 
+            transform: translateY(150px) rotateX(25deg) scale(0.9);
+            transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), opacity 1.2s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+            transform-style: preserve-3d;
         }
 
-        /* When the JS intersection observer triggers */
-        .crevice-card.active {
-            opacity: 1;
-            transform: translateY(0) rotateX(0deg);
-        }
+        /* Triggered by JS */
+        .crevice-card.active { opacity: 1; transform: translateY(0) rotateX(0deg) scale(1); }
 
+        /* Hover Physics */
         .crevice-card:hover {
-            transform: translateY(-5px) scale(1.02);
+            transform: translateY(-10px) scale(1.03) rotateY(2deg); 
             border-color: var(--gold-light);
-            box-shadow: 0 30px 60px rgba(191, 149, 63, 0.15);
-            transition: all 0.4s ease;
+            box-shadow: 0 40px 80px rgba(191, 149, 63, 0.2), inset 0 0 30px rgba(191, 149, 63, 0.1); 
+            z-index: 10;
         }
 
         .section-title {
-            font-family: 'Cinzel', serif;
-            color: var(--gold-light);
-            font-size: 1.8rem;
-            margin-bottom: 20px;
-            letter-spacing: 3px;
-            text-transform: uppercase;
+            font-family: 'Cinzel', serif; color: var(--gold-light); font-size: 2rem;
+            margin-bottom: 25px; letter-spacing: 4px; text-transform: uppercase;
+            text-shadow: 0 2px 10px rgba(191, 149, 63, 0.4);
         }
 
-        .highlight-gold {
-            color: var(--gold-mid);
-            font-weight: 700;
-        }
-
-        p {
-            line-height: 1.8;
-            color: #ddd;
-            margin-bottom: 15px;
-            font-size: 1.05rem;
-        }
+        .highlight-gold { color: var(--gold-mid); font-weight: 700; }
+        p { line-height: 1.9; color: #e0e0e0; margin-bottom: 20px; font-size: 1.1rem; }
 
     </style>
 </head>
 <body>
 
-    <!-- Backgrounds -->
-    <div class="ambient-background"></div>
-    <div class="gold-glow"></div>
+    <!-- REAL-TIME FLUID ENGINE -->
+    <canvas id="fluid-canvas"></canvas>
 
     <!-- The Gatekeeper -->
     <div id="entry-gate" onclick="unlockExperience()">
-        <div class="gate-text">Enter the Abyss</div>
+        <div class="gate-text">ENTER THE ABYSS</div>
     </div>
 
-    <!-- Main 3D Content -->
+    <!-- Main Content -->
     <div id="main-content">
         <header class="hero">
             <h1 class="liquid-gold-text">YASH RAI SHARMA</h1>
@@ -206,34 +129,30 @@
         </header>
 
         <div class="scroll-container">
-            <!-- Card 1 -->
-            <div class="crevice-card hidden">
+            <div class="crevice-card">
                 <h2 class="section-title">Professional Summary</h2>
                 <p>Technocrat with deep expertise in <span class="highlight-gold">Software Development, Quantum Computing, Augmented/Virtual Reality, and Cyber Security</span>.</p>
                 <p>Proven track record in executive project management, strategic partnerships, and innovation. Dedicated to leading high-impact technological advancements and delivering scalable business solutions.</p>
             </div>
 
-            <!-- Card 2 -->
-            <div class="crevice-card hidden">
+            <div class="crevice-card">
                 <h2 class="section-title">Executive Deployment</h2>
                 <p><span class="highlight-gold">Director | VechTech Consulting Private Limited</span></p>
-                <p style="font-size: 0.9rem; color: #888; font-style: italic; margin-top: -10px;">Hyderabad, TS | April 2023 - Present</p>
+                <p style="font-size: 0.95rem; color: #a0a0a0; font-style: italic; margin-top: -15px;">Hyderabad, TS | April 2023 - Present</p>
                 <p>Driving operational excellence and strategic direction for ongoing technical projects. Spearheaded the development of proprietary speech recognition software and the successful implementation of enterprise ERP solutions.</p>
                 <p>Concurrently managed an agile freelance team to architect and deliver over 6 complex web development projects, overseeing the entire lifecycle from client procurement to final deployment.</p>
             </div>
 
-            <!-- Card 3 -->
-            <div class="crevice-card hidden">
+            <div class="crevice-card">
                 <h2 class="section-title">Academic Excellence & Awards</h2>
                 <p><span class="highlight-gold">SRM Institute of Science and Technology</span></p>
                 <p>B.Tech, Computer Science Engineering w/s Software Engineering | CGPA: 8.5</p>
-                <p style="margin-top: 20px; padding-left: 15px; border-left: 2px solid var(--gold-dark);">
+                <p style="margin-top: 25px; padding: 20px; background: rgba(191, 149, 63, 0.05); border-left: 2px solid var(--gold-dark); border-radius: 4px;">
                     <strong>Excellence Award Recipient (May 2024):</strong> Recognized by the School of Computing for outstanding contributions to Entrepreneurship, Management, and Startups.
                 </p>
             </div>
             
-            <!-- Card 4 -->
-            <div class="crevice-card hidden">
+            <div class="crevice-card">
                 <h2 class="section-title">Technical Arsenal</h2>
                 <p><strong>Architecture:</strong> Python, C++, React JS, JavaScript, HTML/CSS+</p>
                 <p><strong>Design & Simulation:</strong> AutoCAD, Figma, Blender, Unity3D, MATLAB</p>
@@ -243,50 +162,92 @@
     </div>
 
     <script>
-        // 1. Audio & Entry Logic
+        /* --- LIVE GOLDEN WATER CANVAS ENGINE --- */
+        const canvas = document.getElementById('fluid-canvas');
+        const ctx = canvas.getContext('2d');
+        let width, height;
+        let time = 0;
+
+        function resize() {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resize);
+        resize();
+
+        function drawFluid() {
+            // Clear screen with Black Rock color
+            ctx.fillStyle = '#050505';
+            ctx.fillRect(0, 0, width, height);
+            
+            time += 0.005; // Speed of the water flow
+
+            // Create multiple overlapping sine waves for a liquid effect
+            for (let i = 0; i < 4; i++) {
+                ctx.beginPath();
+                ctx.moveTo(0, height);
+                
+                // Calculate wave math
+                for (let x = 0; x <= width; x += 30) {
+                    let y = (height * 0.4) 
+                          + Math.sin(x * 0.002 + time + i) * 150 
+                          + Math.cos(x * 0.005 - time + i * 2) * 100;
+                    ctx.lineTo(x, y + (i * 80));
+                }
+                
+                ctx.lineTo(width, height);
+                ctx.lineTo(0, height);
+                
+                // Apply metallic gold gradient
+                let gradient = ctx.createLinearGradient(0, height/2, width, height);
+                gradient.addColorStop(0, `rgba(179, 135, 40, ${0.15 - i*0.02})`); // Dark Gold
+                gradient.addColorStop(0.5, `rgba(252, 246, 186, ${0.1 - i*0.02})`); // Light Gold
+                gradient.addColorStop(1, `rgba(191, 149, 63, ${0.15 - i*0.02})`); // Mid Gold
+                
+                ctx.fillStyle = gradient;
+                ctx.fill();
+            }
+            requestAnimationFrame(drawFluid); // Loop at 60fps
+        }
+        drawFluid(); // Start the engine
+
+        /* --- AUDIO & ENTRY LOGIC --- */
         function unlockExperience() {
             const gate = document.getElementById('entry-gate');
             const content = document.getElementById('main-content');
             
-            // Fade out gate
             gate.style.opacity = '0';
             setTimeout(() => {
                 gate.style.display = 'none';
                 content.style.display = 'block';
-                // Trigger reflow
+                // Trigger reflow for animation
                 void content.offsetWidth;
                 content.style.opacity = '1';
             }, 1500);
 
-            // Play ambient audio (Deep ocean/water sounds)
+            // Trigger Ocean Wave Sound
             const audio = new Audio('https://www.soundjay.com/nature/ocean-wave-1.mp3');
             audio.loop = true;
-            audio.volume = 0.6; // Slightly lowered so it's atmospheric, not overpowering
-            audio.play().catch(e => console.log("Audio requires interaction."));
+            audio.volume = 0.5; // Smooth volume
+            audio.play().catch(e => console.log("Audio started"));
         }
 
-        // 2. 3D Scroll Physics (Intersection Observer)
+        /* --- AGGRESSIVE 3D SCROLL PHYSICS --- */
         document.addEventListener("DOMContentLoaded", () => {
             const cards = document.querySelectorAll('.crevice-card');
-
-            const observerOptions = {
-                root: null,
-                rootMargin: '0px',
-                threshold: 0.15 // Triggers when 15% of the card is visible
-            };
-
-            const observer = new IntersectionObserver((entries, observer) => {
+            
+            const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        // Add active class to trigger CSS 3D transform
                         entry.target.classList.add('active');
                     }
                 });
-            }, observerOptions);
-
-            cards.forEach(card => {
-                observer.observe(card);
+            }, { 
+                threshold: 0.1, // Triggers earlier so you see it slide in
+                rootMargin: "0px 0px -50px 0px" // Adds a delay offset
             });
+
+            cards.forEach(card => observer.observe(card));
         });
     </script>
 </body>
