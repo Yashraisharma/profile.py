@@ -21,6 +21,7 @@
             color: #fff;
             font-family: 'Montserrat', sans-serif;
             overflow-x: hidden;
+            width: 100%;
         }
 
         /* LIVE GOLD FLUID BACKGROUND ENGINE */
@@ -37,10 +38,11 @@
         }
 
         .gate-text {
-            font-family: 'Cinzel', serif; font-size: 2rem; letter-spacing: 15px;
-            color: var(--gold-mid); text-transform: uppercase;
+            font-family: 'Cinzel', serif; font-size: 1.5rem; letter-spacing: 8px;
+            color: var(--gold-mid); text-transform: uppercase; text-align: center;
             animation: breathe 3s infinite ease-in-out;
             text-shadow: 0 0 30px rgba(191, 149, 63, 0.8);
+            padding: 20px;
         }
 
         @keyframes breathe { 0%, 100% { opacity: 0.3; transform: scale(0.98); } 50% { opacity: 1; transform: scale(1.02); } }
@@ -50,57 +52,75 @@
             display: none; opacity: 0; transition: opacity 2s ease; perspective: 1200px;
         }
 
-        .hero { height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 0 20px; z-index: 10; }
+        .hero { 
+            min-height: 100dvh; display: flex; flex-direction: column; 
+            align-items: center; justify-content: center; text-align: center; 
+            padding: 40px 20px; z-index: 10; 
+        }
 
         .liquid-gold-text {
-            font-family: 'Cinzel', serif; font-size: clamp(3rem, 8vw, 6.5rem); font-weight: 700;
+            font-family: 'Cinzel', serif; font-size: clamp(2.2rem, 10vw, 6.5rem); font-weight: 700;
             background: linear-gradient(45deg, var(--gold-dark), #fff, var(--gold-mid), var(--gold-light));
             background-size: 300% 300%; -webkit-background-clip: text; -webkit-text-fill-color: transparent;
             animation: liquid-flow 5s ease infinite;
-            filter: drop-shadow(0px 15px 25px rgba(191,149,63,0.3)); margin-bottom: 10px; letter-spacing: 8px;
+            filter: drop-shadow(0px 10px 15px rgba(191,149,63,0.3)); 
+            margin-bottom: 15px; letter-spacing: 4px; line-height: 1.1;
         }
 
         @keyframes liquid-flow { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
 
-        .subtitle { font-size: 1.1rem; letter-spacing: 8px; text-transform: uppercase; color: #ccc; text-shadow: 0 5px 10px #000; margin-bottom: 25px; }
+        .subtitle { 
+            font-size: clamp(0.8rem, 3vw, 1.1rem); letter-spacing: 4px; 
+            text-transform: uppercase; color: #ccc; text-shadow: 0 5px 10px #000; 
+            margin-bottom: 30px; 
+        }
         
         .contact-bar {
-            display: flex; gap: 20px; flex-wrap: wrap; justify-content: center;
-            font-size: 0.9rem; letter-spacing: 2px; color: var(--gold-mid);
+            display: flex; gap: 15px; flex-wrap: wrap; justify-content: center;
+            font-size: 0.85rem; letter-spacing: 1px; color: var(--gold-mid);
         }
         .contact-bar a { color: var(--gold-mid); text-decoration: none; transition: all 0.3s ease; }
         .contact-bar a:hover { color: #fff; text-shadow: 0 0 10px var(--gold-light); }
 
         /* 3D SCROLL CARDS */
-        .scroll-container { max-width: 1000px; margin: 0 auto; padding: 50px 20px 150px 20px; }
+        .scroll-container { max-width: 1000px; margin: 0 auto; padding: 20px 15px 100px 15px; }
 
         .crevice-card {
-            background: rgba(10, 10, 10, 0.4); backdrop-filter: blur(20px); 
-            border: 1px solid rgba(191, 149, 63, 0.3); border-left: 5px solid var(--gold-mid);
-            padding: 50px; margin-bottom: 100px; border-radius: 8px; 
-            box-shadow: 0 30px 60px rgba(0,0,0,0.8), inset 0 0 20px rgba(191, 149, 63, 0.05);
-            opacity: 0; transform: translateY(150px) rotateX(25deg) scale(0.9);
-            transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), opacity 1.2s ease;
+            background: rgba(10, 10, 10, 0.6); backdrop-filter: blur(15px); 
+            border: 1px solid rgba(191, 149, 63, 0.2); border-left: 5px solid var(--gold-mid);
+            padding: 40px 30px; margin-bottom: 80px; border-radius: 8px; 
+            box-shadow: 0 20px 60px rgba(0,0,0,0.9);
+            opacity: 0; transform: translateY(100px) rotateX(15deg);
+            transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1), opacity 1s ease;
             transform-style: preserve-3d;
         }
 
-        .crevice-card.active { opacity: 1; transform: translateY(0) rotateX(0deg) scale(1); }
+        .crevice-card.active { opacity: 1; transform: translateY(0) rotateX(0deg); }
 
         .section-title {
-            font-family: 'Cinzel', serif; color: var(--gold-light); font-size: 2rem;
-            margin-bottom: 35px; letter-spacing: 4px; text-transform: uppercase;
-            text-shadow: 0 2px 10px rgba(191, 149, 63, 0.4); border-bottom: 1px solid rgba(191,149,63,0.2); padding-bottom: 15px;
+            font-family: 'Cinzel', serif; color: var(--gold-light); font-size: 1.8rem;
+            margin-bottom: 30px; letter-spacing: 3px; text-transform: uppercase;
+            border-bottom: 1px solid rgba(191,149,63,0.2); padding-bottom: 15px;
         }
 
-        .job-title { font-size: 1.3rem; font-weight: 700; color: #fff; margin-bottom: 5px; }
-        .job-meta { font-size: 0.95rem; color: var(--gold-mid); font-style: italic; margin-bottom: 20px; letter-spacing: 1px; }
+        .job-title { font-size: 1.3rem; font-weight: 700; color: #fff; margin-bottom: 5px; line-height: 1.3; }
+        .job-meta { font-size: 0.9rem; color: var(--gold-mid); font-style: italic; margin-bottom: 20px; letter-spacing: 1px; }
         
         .highlight-gold { color: var(--gold-mid); font-weight: 700; }
-        p { line-height: 1.9; color: #e0e0e0; margin-bottom: 25px; font-size: 1.05rem; text-align: justify; }
+        p { line-height: 1.8; color: #e0e0e0; margin-bottom: 25px; font-size: 1.05rem; text-align: justify; }
         ul { margin-left: 20px; color: #e0e0e0; margin-bottom: 25px; line-height: 1.8; }
-        li { margin-bottom: 12px; }
+        li { margin-bottom: 12px; font-size: 1rem; }
 
-        .project-block { margin-bottom: 45px; }
+        .project-block { margin-bottom: 40px; padding-bottom: 20px; border-bottom: 1px hidden rgba(255,255,255,0.1); }
+
+        /* MOBILE SPECIFIC TWEAKS */
+        @media (max-width: 768px) {
+            .gate-text { font-size: 1.1rem; letter-spacing: 5px; }
+            .contact-bar { flex-direction: column; gap: 10px; }
+            .crevice-card { padding: 30px 20px; margin-bottom: 50px; }
+            .section-title { font-size: 1.5rem; }
+            .job-title { font-size: 1.15rem; }
+        }
     </style>
 </head>
 <body>
@@ -127,74 +147,104 @@
             <!-- SUMMARY -->
             <div class="crevice-card">
                 <h2 class="section-title">Professional Summary</h2>
-                <p>Technocrat and Growth Strategist with deep roots in emerging technologies like <span class="highlight-gold">AI, AR/VR, and Cyber Security</span>. Transitioned into Executive Management with a focus on Organizational Dynamics, having successfully hired, trained, and managed large-scale workforce teams. Skilled in <span class="highlight-gold">Growth Marketing, CRM strategy, and product lifecycle management</span>. Aspiring to lead at the intersection of technology and business, utilizing high-level decision-making to drive sustainable organizational success.</p>
+                <p>Technocrat and Growth Strategist with deep roots in emerging technologies like <span class="highlight-gold">AI, AR/VR, and Cyber Security</span>. Transitioned into Executive Management with a focus on Organizational Dynamics, having successfully hired, trained, and managed large-scale workforce teams. Skilled in <span class="highlight-gold">Growth Marketing, CRM strategy, and product lifecycle management</span>. Aspiring to lead at the intersection of technology and business, utilizing experience in high-level decision-making and strategic operations to drive sustainable organizational success.</p>
             </div>
 
-            <!-- CORE WORK EXPERIENCE -->
+            <!-- PRIMARY WORK EXPERIENCE -->
             <div class="crevice-card">
-                <h2 class="section-title">Corporate Deployment</h2>
+                <h2 class="section-title">Professional Experience</h2>
                 
-                <div class="job-title">Assistant Growth Manager | Apollo 247 (Apollo HealthCo)</div>
+                <div class="job-title">Assistant Growth Manager - Growth Marketing @Apollo247/Apollo HeathCo Limited</div>
                 <div class="job-meta">Jul 2024 - Present</div>
-                <p>Working directly under the mentorship of the <span class="highlight-gold">CEO, CMO, and VP</span>, executing strategies aligned with the company’s broader vision. Gained high-level insights into the corporate organizational dynamics of a large-scale health-tech organization.</p>
+                <p>Actively served under the direct mentorship and supervision of the <span class="highlight-gold">CEO, CMO, and VP</span>. My experience working in close proximity to the company’s top leadership has equipped me with essential high-level management and strategic thinking skills, allowing me to execute strategies aligned with the company’s broader vision.</p>
                 <ul>
-                    <li><strong>Growth Marketing & CRM:</strong> Executed SMS, WhatsApp, and Push campaigns using <span class="highlight-gold">CleverTap</span> based on user behavioral data.</li>
-                    <li><strong>Content Management:</strong> Managed app/web content using <span class="highlight-gold">Contentful, Magento, and JavaScript</span>, handling technical deployments via Jenkins and Jira.</li>
-                    <li><strong>Team Leadership:</strong> Co-headed a 150-member team; personally managed the hiring and training for the Apollo Advisor Program launch.</li>
-                    <li><strong>Product Development:</strong> Collaborated with the Tech team to build a custom internal application for personnel management from the ground up.</li>
+                    <li><strong>App & Web Content Management:</strong> Managed frontend content for mobile/web using <span class="highlight-gold">Contentful, Magento, and JavaScript</span>. Handled technical deployment cycles via Jenkins and Jira to ensure live site stability.</li>
+                    <li><strong>User Experience Strategy:</strong> Determined page layouts and content visibility based on user intent. Managed categorization for Homepage, Diagnostics, Pharma, and FMCG segments based on behavioral data.</li>
+                    <li><strong>Internal Product Development:</strong> Collaborated with the Tech Product team to build a dedicated application from the ground up for internal personnel management.</li>
+                    <li><strong>Apollo Advisor Program (Scale & Operations):</strong> Co-headed a <span class="highlight-gold">150-member team</span> as one of two primary leads. Personally managed the hiring and training of almost every individual to drive loyalty programs.</li>
+                    <li><strong>CRM & Lifecycle Marketing:</strong> Executed SMS, WhatsApp, and Push Notification campaigns targeted at specific audiences using <span class="highlight-gold">CleverTap, Karix, and VI</span>.</li>
                 </ul>
 
-                <div class="job-title">Director & Co-Founder | VecTech Consulting Private Limited</div>
-                <div class="job-meta">Hyderabad, TS | April 2023 - Present</div>
-                <p>Contributing to strategic operations and technical project direction. Spearheaded the development of proprietary speech recognition software and business ERP solutions. Oversaw the full lifecycle of over 6 web development projects, managing everything from work procurement to team coordination.</p>
+                <div class="job-title" style="margin-top:40px;">Director & Co-Founder @VecTech Consulting Private Limited</div>
+                <div class="job-meta">Hyderabad, TS | Apr 2023 - Present</div>
+                <p>Honing skills in high-level decision-making and organizational dynamics. Conducive in the development of proprietary speech recognition software and business ERP solutions. Managed a freelance team to complete over 6 web development projects, overseeing the entire process from work procurement to team coordination.</p>
             </div>
 
-            <!-- TECHNICAL ARSENAL -->
+            <!-- INTERNSHIPS -->
             <div class="crevice-card">
-                <h2 class="section-title">Technical Arsenal</h2>
-                <ul>
-                    <li><span class="highlight-gold">Programming:</span> Python3, C, C++, HTML, CSS+, JavaScript, React JS, Offensive Security.</li>
-                    <li><span class="highlight-gold">CRM & Marketing:</span> CleverTap, Contentful, Magento, VI, Karix.</li>
-                    <li><span class="highlight-gold">Design & Modeling:</span> AutoCAD, Figma, MATLAB, Blender, Unity3D.</li>
-                    <li><span class="highlight-gold">Certifications:</span> Google Data Analytics, Google Foundations of Project Mgmt, IBM Cloud Computing, Erasmus Serious Gaming.</li>
-                </ul>
+                <h2 class="section-title">Corporate Internships</h2>
+                
+                <div class="job-title">Cyber Security Intern | Allvy Software Solutions</div>
+                <div class="job-meta">Feb 2024</div>
+                <p>Actively involved in handling <span class="highlight-gold">government tenders</span> focused on establishing Security Operations Centers (SOCs) and Cyber Network Operations Centers (C-NOCs). Grasped the technical and operational aspects of critical cybersecurity infrastructure setups.</p>
+
+                <div class="job-title" style="margin-top:30px;">Application Development Engineer Intern | HappiApps</div>
+                <div class="job-meta">Aug 2022 – Jan 2023</div>
+                <p>Specialized as a UI/UX and front-end engineer across multiple projects. Refined skills in collaboration and project execution methodologies while gaining practical software development experience.</p>
             </div>
 
-            <!-- PROJECTS -->
+            <!-- LEADERSHIP & OTHER -->
             <div class="crevice-card">
-                <h2 class="section-title">Selected Projects</h2>
+                <h2 class="section-title">Leadership & Initiatives</h2>
+                
+                <div class="job-title">Core-Quantum Lead | Quantum Computing Lab SRM</div>
+                <div class="job-meta">Mar 2023 – Oct 2023</div>
+                <p>Led a dynamic team of over 50 members in research and development. Secured sponsorships for events and procured professors to enrich the learning experiences of club members.</p>
+
+                <div class="job-title">VP & Industry Relations Head | CodeChamps Lab SRM</div>
+                <div class="job-meta">Jan 2023 – Feb 2023</div>
+                <p>Engaged multiple professionals from various industries to mentor club members. Facilitated workshops and talks, fostering meaningful connections between academia and industry.</p>
+
+                <div class="job-title">Events Director & Mentor | Cherry Network +</div>
+                <div class="job-meta">Nov 2022 – Sep 2023</div>
+                <p>Overseeing the planning and execution of various activities, leading a team in organizing large-scale and micro gatherings. Transitioned into a mentorship role to empower peers in event planning strategies.</p>
+            </div>
+
+            <!-- TECHNICAL PROJECTS -->
+            <div class="crevice-card">
+                <h2 class="section-title">Technical Projects</h2>
                 
                 <div class="project-block">
-                    <div class="job-title">AI Heart Attack Prediction System</div>
-                    <p>Utilized the Cleveland dataset to analyze and predict heart attack probabilities through comparative Machine Learning models, providing doctors with early preventative indicators.</p>
+                    <div class="job-title">Heart Attack Prediction System</div>
+                    <p><strong>Objective:</strong> Predict heart attack probability using A.I. to give doctors indicators for necessary precautions and treatments.</p>
+                    <p><strong>Solution:</strong> Uses the Cleveland dataset to learn, analyze, and predict probability through various Machine Learning models, comparing them for the best prediction accuracy.</p>
+                </div>
+
+                <div class="project-block">
+                    <div class="job-title">Pneumonia Detection System</div>
+                    <p><strong>Objective:</strong> Develop an accurate algorithm to distinguish between bacterial and viral pneumonia via medical image analysis.</p>
+                    <p><strong>Solution:</strong> Deep learning model integrated into detection software, developed by preparing a large dataset of chest X-ray images.</p>
                 </div>
 
                 <div class="project-block">
                     <div class="job-title">SRM NAV System (VR/AR)</div>
-                    <p>Developed an optimized navigation system using <span class="highlight-gold">Blender and Unity</span>. Applied Kruskal's algorithm to determine the fastest routes within the SRM infrastructure via VR interface.</p>
+                    <p><strong>Objective:</strong> Implement an optimized navigation system using VR headsets to guide users along the fastest route between designated points.</p>
+                    <p><strong>Solution:</strong> Leveraging <span class="highlight-gold">Blender</span> for infrastructure modeling and applying Kruskal's algorithm via <span class="highlight-gold">Unity</span> for real-time navigation.</p>
                 </div>
 
                 <div class="project-block">
                     <div class="job-title">Interactive 3D India Map</div>
-                    <p>Created a Python-based 3D representation of India with a visually intuitive GUI, featuring historical data and real-time news integration.</p>
+                    <p><strong>Objective:</strong> Immersive map system enriched with visual guides, historical info, and real-time news updates on current events.</p>
+                    <p><strong>Solution:</strong> GUI enables users to interact with Python-based software effortlessly to explore cultural heritage and stay updated with current events.</p>
                 </div>
             </div>
 
-            <!-- ACADEMIA -->
+            <!-- SKILLS & ACADEMIA -->
             <div class="crevice-card">
-                <h2 class="section-title">Academic Profile</h2>
+                <h2 class="section-title">Academia & Arsenal</h2>
                 <div class="job-title">SRM Institute of Science and Technology, Chennai</div>
                 <div class="job-meta">B.Tech, CSE w/s Software Engineering | May 2024 | CGPA: 8.5</div>
                 
-                <p style="padding: 15px; background: rgba(191, 149, 63, 0.05); border-left: 2px solid var(--gold-dark); border-radius: 4px;">
-                    <strong>Excellence Award Recipient (May 2024):</strong> Recognized by the School of Computing for outstanding contributions to Entrepreneurship, Management, and Startups.
+                <p style="padding: 15px; background: rgba(191, 149, 63, 0.05); border-left: 2px solid var(--gold-dark); border-radius: 4px; margin-bottom: 30px;">
+                    <strong>Excellence Award Recipient (May 2024):</strong> Recognized for outstanding contributions to Entrepreneurship, Management, and Startups.
                 </p>
 
-                <div class="job-title" style="margin-top:20px;">Other Experiences</div>
+                <div class="job-title">Technical Arsenal</div>
                 <ul>
-                    <li><strong>Core-Quantum Lead | Quantum Computing Lab SRM:</strong> Led a 50+ member team in research and development.</li>
-                    <li><strong>Events Director | Cherry Network +:</strong> Managed planning and logistics for large-scale gatherings.</li>
-                    <li><strong>VP | CodeChamps Lab SRM:</strong> Bridged the gap between academia and industry by engaging multiple industry professionals.</li>
+                    <li><span class="highlight-gold">Programming:</span> Python3, C, C++, HTML, CSS+, JavaScript, React JS, Offensive Security.</li>
+                    <li><span class="highlight-gold">CRM & CMS:</span> CleverTap, Contentful, Magento, VI, Karix.</li>
+                    <li><span class="highlight-gold">Design & Modeling:</span> AutoCAD, Figma, MATLAB, Microsoft Office, Blender, Unity3D.</li>
+                    <li><span class="highlight-gold">Certifications:</span> Google Data Analytics, Google Project Mgmt, IBM Cloud, Erasmus Serious Gaming.</li>
                 </ul>
             </div>
         </div>
@@ -242,11 +292,11 @@
                 setTimeout(() => { content.style.opacity = '1'; }, 50); 
             }, 1500);
 
-            // MUSIC TRIGGER
+            // FILENAME: BG.mp3.mp3
             const audio = new Audio('BG.mp3.mp3');
             audio.loop = true;
             audio.volume = 0.5;
-            audio.play().catch(e => console.log("Audio waiting for user click."));
+            audio.play().catch(e => console.log("Audio trigger confirmed."));
         }
 
         /* 3D SCROLL REVEAL */
