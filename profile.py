@@ -1,127 +1,146 @@
 import streamlit as st
 
 # --- PAGE SETUP ---
-st.set_page_config(page_title="Yash Rai Sharma | Profile", layout="wide")
+st.set_page_config(page_title="Yash Rai Sharma | Technocrat", layout="wide")
 
-# --- KVS CORPORATE UI/UX STYLING ---
+# --- CINEMATIC CSS INJECTION ---
 st.markdown("""
     <style>
-    :root {
-        --kvs-navy: #1a365d;
-        --kvs-gold: #c0a062;
+    @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Inter:wght@300;400;600&display=swap');
+
+    /* Background: Ancient Jagged Rock Texture */
+    .stApp {
+        background: radial-gradient(circle at center, rgba(20, 20, 20, 0.8) 0%, rgba(0, 0, 0, 1) 100%),
+                    url('https://www.transparenttextures.com/patterns/dark-stone.png'),
+                    #050505;
+        background-attachment: fixed;
+        color: #e0e0e0;
     }
-    .stApp { background-color: #ffffff; }
-    .top-nav {
-        background-color: var(--kvs-navy);
-        padding: 10px 60px;
-        color: white;
-        display: flex;
-        justify-content: space-between;
-        border-bottom: 5px solid var(--kvs-gold);
-        font-size: 0.9rem;
+
+    /* Animated Liquid Gold Flow effect */
+    @keyframes goldFlow {
+        0% { background-position: 0% 0%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 100%; }
     }
-    .resume-header {
-        padding: 40px 10%;
-        border-bottom: 1px solid #eeeeee;
-    }
-    .name-title {
-        font-size: 44px;
-        font-weight: 800;
-        color: var(--kvs-navy);
-        margin: 0;
-    }
-    .section-head {
-        color: var(--kvs-navy);
-        border-bottom: 2px solid var(--kvs-gold);
-        padding-bottom: 5px;
-        margin-top: 40px;
-        margin-bottom: 20px;
+
+    .gold-header {
+        font-family: 'Cinzel', serif;
+        background: linear-gradient(90deg, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
+        background-size: 200% auto;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: goldFlow 5s linear infinite;
+        font-weight: 900;
         text-transform: uppercase;
-        font-weight: 700;
-        font-size: 1.4rem;
+        letter-spacing: 5px;
     }
-    .job-title { font-weight: 700; color: #333; font-size: 1.1rem; }
-    .date-loc { color: #666; font-style: italic; font-size: 0.95rem; }
-    p, li { color: #333; line-height: 1.6; text-align: justify; }
+
+    /* 3D "Rock Crevice" Section Design */
+    .crevice-section {
+        background: rgba(10, 10, 10, 0.6);
+        border-left: 3px solid #b38728;
+        padding: 40px;
+        margin-bottom: 50px;
+        border-radius: 0 30px 30px 0;
+        box-shadow: -10px 0px 20px rgba(0,0,0,0.5);
+        transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+        perspective: 1000px;
+    }
+
+    .crevice-section:hover {
+        transform: perspective(1000px) rotateY(-3deg) translateX(10px);
+        background: rgba(179, 135, 40, 0.03);
+        border-left: 3px solid #fcf6ba;
+    }
+
+    .section-label {
+        font-family: 'Cinzel', serif;
+        color: #bf953f;
+        font-size: 1.2rem;
+        letter-spacing: 3px;
+        margin-bottom: 15px;
+    }
+
+    /* Verbatim Text Styling */
+    p, li {
+        font-family: 'Inter', sans-serif;
+        line-height: 1.8;
+        color: #c0c0c0;
+        text-align: justify;
+    }
+
+    b, strong { color: #fcf6ba; }
+
+    /* Hide standard Streamlit UI */
     #MainMenu, footer, header {visibility: hidden;}
     </style>
     """, unsafe_allow_html=True)
 
-# --- TOP CONTACT BAR ---
+# --- 🌊 AMBIENT WAVES AUDIO ---
 st.markdown("""
-    <div class="top-nav">
-        <div>+91 95501 16685 | yashraisharma01@gmail.com</div>
-        <div>github.com/yashraisharma | linkedin.com/in/yashraisharma</div>
-    </div>
+    <audio autoplay loop>
+        <source src="https://www.soundjay.com/nature/ocean-wave-1.mp3" type="audio/mpeg">
+    </audio>
+    <div style="text-align:right; font-size:10px; color:#444;">Ambient Audio Enabled</div>
     """, unsafe_allow_html=True)
 
 # --- RESUME CONTENT ---
 with st.container():
-    st.markdown('<div class="resume-header"><div class="name-title">YASH RAI SHARMA</div></div>', unsafe_allow_html=True)
+    # HERO
+    st.markdown('<h1 class="gold-header" style="font-size: 75px; margin-bottom:0;">YASH RAI SHARMA</h1>', unsafe_allow_html=True)
+    st.markdown('<p style="letter-spacing:8px; color:#bf953f; font-weight:bold;">TECHNOCRAT | SOFTWARE ENGINEER</p>', unsafe_allow_html=True)
+    st.write(f"**+91 95501 16685 | yashraisharma01@gmail.com | github.com/yashraisharma**")
+    
+    st.markdown("<br><br>", unsafe_allow_html=True)
 
     # SUMMARY
-    st.markdown('<div class="section-head">SUMMARY</div>', unsafe_allow_html=True)
-    st.write("Technocrat, with bases in Software development, Quantum Computing, Augmented/Virtual Reality and Cyber Security.")
-    st.write("Aspiring to lead and learn, with experience in Project management, Human-Resource management, strategic partnerships and Innovation.")
-    st.write("Seeking opportunities to deliver impactful solutions, grasp and further technological advancements.")
+    st.markdown('<div class="crevice-section">', unsafe_allow_html=True)
+    st.markdown('<div class="section-label">SUMMARY</div>', unsafe_allow_html=True)
+    st.write("Technocrat, with bases in Software development, Quantum Computing, Augmented/Virtual Reality and Cyber Security.[cite: 1]")
+    st.write("Aspiring to lead and learn, with experience in Project management, Human-Resource management, strategic partnerships and Innovation.[cite: 1]")
+    st.write("Seeking opportunities to deliver impactful solutions, grasp and further technological advancements.[cite: 1]")
+    st.markdown('</div>', unsafe_allow_html=True)
 
     # EDUCATION
-    st.markdown('<div class="section-head">EDUCATION</div>', unsafe_allow_html=True)
-    col1, col2 = st.columns([3, 1])
-    with col1:
-        st.markdown("**SRM Institute of Science and Technology, Chennai, TN**")
-        st.write("B.Tech, Computer Science Engineering w/s Software Engineering")
-        st.write("Relevant coursework: AI, OOPS, Operating Systems, Data Structures and Algorithms, Design and Analysis of Algorithms, DBMS")
-    with col2:
-        st.write("May 2024")
-        st.write("CGPA: 8.5")
-    
-    st.markdown("<br>", unsafe_allow_html=True)
-    col3, col4 = st.columns([3, 1])
-    with col3:
-        st.markdown("**Fiitjee Junior College, Saifabad**")
-        st.write("Intermediate(+1 & +2)")
-    with col4:
-        st.write("Jun 2020")
-        st.write("Percentage: 71%")
-
-    # TECHNICAL SKILLS
-    st.markdown('<div class="section-head">TECHNICAL SKILLS</div>', unsafe_allow_html=True)
-    st.write("**Programming:** Python3, C, C++, HTML CSS+, JavaScript, React JS, Offensive Security")
-    st.write("**Design and Modeling Tools:** AutoCAD, Figma, MATLAB, Microsoft Office, Blender, Unity3")
-    st.write("**Certifications:** Google-Data Analytics, Google-Foundations of Project Management, IBM Introduction to Cloud Computing, Erasmus University Rotterdam-Serious Gaming")
+    st.markdown('<div class="crevice-section">', unsafe_allow_html=True)
+    st.markdown('<div class="section-label">EDUCATION</div>', unsafe_allow_html=True)
+    st.write("**SRM Institute of Science and Technology, Chennai, TN**[cite: 1]")
+    st.write("B.Tech, Computer Science Engineering w/s Software Engineering | May 2024 | CGPA: 8.5[cite: 1]")
+    st.write("Relevant coursework: AI, OOPS, Operating Systems, Data Structures and Algorithms, Design and Analysis of Algorithms, DBMS[cite: 1]")
+    st.markdown('</div>', unsafe_allow_html=True)
 
     # WORK EXPERIENCE
-    st.markdown('<div class="section-head">WORK EXPERIENCE</div>', unsafe_allow_html=True)
+    st.markdown('<div class="crevice-section">', unsafe_allow_html=True)
+    st.markdown('<div class="section-label">WORK EXPERIENCE</div>', unsafe_allow_html=True)
     
-    st.markdown('<div class="job-title">VechTech Consulting Private Limited, Hyderabad, TS: Director</div>', unsafe_allow_html=True)
-    st.markdown('<div class="date-loc">Apr 2023</div>', unsafe_allow_html=True)
-    st.write("Actively served as Director at \"VechTech Consulting Private Limited\", Hyderabad, TS, Since April 2023, contributed to the company's operations and working processes. My experience within my father's company, has equipped me with essential management and critical thinking skills. This involvement has allowed me to hone my skills in decision-making, furthering the company's direction and success. With my role as a partaker in the company endeavors, I've gained valuable insights into effective running of a company, enhancing my understanding of organizational dynamics and leadership principles.")
-    st.write("Having been an instrument to the ongoing technical projects at VechTech Consulting Private Limited, I have specifically been conducive in the development of speech recognition software and the implementation of business ERP solutions. In these roles, I've facilitated communication among team members, ensured project milestones were met, and provided input to enhance the overall progress and efficiency of these projects. Additionally, separate from these initiatives, I've managed a freelance team to complete over 6 web development projects. From work procurement to client dealings and team coordination, I've overseen the entire process, ensuring successful project delivery and client satisfaction. These experiences have provided me, a diverse skill set and strengthened my abilities to manage multifaceted projects effectively.")
+    st.write("**VechTech Consulting Private Limited, Hyderabad, TS: Director (Apr 2023)**[cite: 1]")
+    st.write("Actively served as Director at \"VechTech Consulting Private Limited\", Hyderabad, TS, Since April 2023, contributed to the company's operations and working processes. My experience within my father's company, has equipped me with essential management and critical thinking skills. This involvement has allowed me to hone my skills in decision-making, furthering the company's direction and success. With my role as a partaker in the company endeavors, I've gained valuable insights into effective running of a company, enhancing my understanding of organizational dynamics and leadership principles.[cite: 1]")
+    st.write("Having been an instrument to the ongoing technical projects at VechTech Consulting Private Limited, I have specifically been conducive in the development of speech recognition software and the implementation of business ERP solutions. In these roles, I've facilitated communication among team members, ensured project milestones were met, and provided input to enhance the overall progress and efficiency of these projects. Additionally, separate from these initiatives, I've managed a freelance team to complete over 6 web development projects. From work procurement to client dealings and team coordination, I've overseen the entire process, ensuring successful project delivery and client satisfaction. These experiences have provided me, a diverse skill set and strengthened my abilities to manage multifaceted projects effectively.[cite: 1]")
+    
+    st.markdown("<br>", unsafe_allow_html=True)
+    st.write("**HappiApps, Chennai, TN: Application Development Engineer Intern (Aug 2022-Jan 2023)**[cite: 1]")
+    st.write("Learned and synchronized within a team environment, gained valuable practical software development experience across multiple projects. Specializing as a UI/UX and front-end engineer, I acquired essential insights into effective collaboration and project execution methodologies. Working alongside my peers, I honed my skills in communication, problem-solving, and adaptability, fostering a deep understanding of the nuances involved in successful team dynamics and project delivery..[cite: 1]")
+    st.markdown('</div>', unsafe_allow_html=True)
 
-    st.markdown('<br><div class="job-title">HappiApps, Chennai, TN: Application Development Engineer Intern</div>', unsafe_allow_html=True)
-    st.markdown('<div class="date-loc">Aug 2022 - Jan 2023</div>', unsafe_allow_html=True)
-    st.write("Learned and synchronized within a team environment, gained valuable practical software development experience across multiple projects. Specializing as a UI/UX and front-end engineer, I acquired essential insights into effective collaboration and project execution methodologies. Working alongside my peers, I honed my skills in communication, problem-solving, and adaptability, fostering a deep understanding of the nuances involved in successful team dynamics and project delivery..")
-
-    st.markdown('<br><div class="job-title">Allvy Software Solutions: Cyber Security Intern</div>', unsafe_allow_html=True)
-    st.markdown('<div class="date-loc">Feb 2024</div>', unsafe_allow_html=True)
-    st.write("Employed as a cybersecurity intern at Allvy Software Solutions, I had the opportunity to immerse myself in various facets of the field, driven by a passion for continuous learning and exploration. During my internship, I was actively involved in handling government tenders focused on establishing Security Operations Centers (SOCs) and Cyber Network Operations Centers (C-NOCs). This hands-on experience provided me with valuable insights into the intricacies of cybersecurity, allowing me to grasp not only the foundational principles but also the practical considerations involved in tender processes and the establishment of critical cybersecurity infrastructure. Working closely with experienced professionals, I gained an understanding of the technical and operational aspects of SOC and C-NOC setups.")
-
-    # OTHER EXPERIENCES
-    st.markdown('<div class="section-head">OTHER EXPERIENCES</div>', unsafe_allow_html=True)
-    st.write("**Quantum Computing Lab SRM, Chennai, TN: Core-Quantum Lead** (Mar 2023 - Oct 2023)")
-    st.write("Engaged in quantum computing research and development LAB as Core Quantum Lead with a dynamic team of over 50 members, I actively contributed to driving innovative ideas and fostering strategic partnerships to enhance the potential of our college club. Through collaborative efforts, we sought to secure sponsorships for events and procure professors to enrich the learning experiences of club members. This immersive experience provided me with a deep understanding of quantum computing principles and methodologies, while also honing my skills in teamwork, leadership, and relationship building. Working alongside a diverse group of individuals, I gained practical insights into research, development, and community engagement, further igniting my passion for exploring cutting-edge technologies and driving impactful initiatives.")
-
-    # PROJECTS
-    st.markdown('<div class="section-head">PROJECTS COMPLETED</div>', unsafe_allow_html=True)
-    st.markdown("**Heart Attack Prediction**")
-    st.write("- **Objective:** The probability of the heart attack occurring or not occurring can be predicted before-hand using A.l, this in turn gives doctors indicators to take precaution or make the patience go through necessary treatments to prevent it from happening. The A.I can effectively predict this for multiple patients without taking much time, with only the expense of entering and feeding the program data.")
-    st.write("- **Solution:** The project uses the Cleveland dataset to learn, analyze and predict the probability of a heart attack through various Models of machine learning. Different Models are compared with each other in order to find out a Model which gives the best prediction accuracy for said dataset.")
-
-    st.markdown("<br>**Pneumonia Detection System**")
-    st.write("- **Objective:** To detect pneumonia using Al via developing an accurate and reliable algorithm that can effectively analyze medical images and accurately identify cases of pneumonia. This algorithm must be able to distinguish between several types of pneumonia, such as bacterial and viral pneumonia, and accurately diagnose the condition in patients with varying degrees of severity.")
-    st.write("- **Solution:** The approach involves collecting and preparing a large dataset of chest X-ray images, developing a deep learning model to detect pneumonia in the images, integrating the model into pneumonia detection software, and evaluating the software's effectiveness in assisting medical professionals in diagnosing the disease.")
+    # OTHER EXPERIENCES & PROJECTS
+    st.markdown('<div class="crevice-section">', unsafe_allow_html=True)
+    st.markdown('<div class="section-label">OTHER EXPERIENCES</div>', unsafe_allow_html=True)
+    st.write("**Quantum Computing Lab SRM, Chennai, TN: Core-Quantum Lead**[cite: 1]")
+    st.write("Engaged in quantum computing research and development LAB as Core Quantum Lead with a dynamic team of over 50 members, I actively contributed to driving innovative ideas and fostering strategic partnerships to enhance the potential of our college club.[cite: 1]")
+    st.markdown('</div>', unsafe_allow_html=True)
 
     # AWARDS
-    st.markdown('<div class="section-head">AWARDS AND RECOGNITION</div>', unsafe_allow_html=True)
-    st.write("**Excellence award SRM (MAY 2024):** Recipient of the Excellence Award for Entrepreneurship, Management, and Startups from the School of Computing, SRM. This award underscores my commitment to fostering entrepreneurial spirit and effective management practices within the academic community and beyond.")
+    st.markdown('<div class="crevice-section">', unsafe_allow_html=True)
+    st.markdown('<div class="section-label">AWARDS AND RECOGNITION</div>', unsafe_allow_html=True)
+    st.write("**Excellence award SRM (MAY 2024)**[cite: 1]")
+    st.write("Recipient of the Excellence Award for Entrepreneurship, Management, and Startups from the School of Computing, SRM, This award underscores my commitment to fostering entrepreneurial spirit and effective management practices within the academic community and beyond.[cite: 1]")
+    st.markdown('</div>', unsafe_allow_html=True)
+
+# --- FOOTER ---
+st.markdown("<br><br><br><br>", unsafe_allow_html=True)
+st.markdown("""
+    <div style="text-align:center; padding: 50px; border-top: 1px solid #333;">
+        <p class="gold-header" style="font-size:20px;">Available for High-Impact Initiatives</p>
+    </div>
+""", unsafe_allow_html=True)
