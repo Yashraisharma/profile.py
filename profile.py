@@ -1,94 +1,94 @@
 import streamlit as st
 
 # --- PAGE SETUP ---
-st.set_page_config(page_title="Yash Rai Sharma | Profile", layout="wide")
+st.set_page_config(page_title="Yash Rai Sharma | Technocrat", layout="wide")
 
-# --- KVS STYLE CSS ---
+# --- KVS CORPORATE UI/UX STYLING ---
 st.markdown("""
     <style>
-    /* KVS Corporate Color Palette */
     :root {
         --kvs-navy: #1a365d;
         --kvs-gold: #c0a062;
-        --kvs-text: #333333;
+        --kvs-light-bg: #fdfdfd;
     }
 
     .stApp { background-color: #ffffff; }
 
-    /* Top Navigation Simulation */
+    /* Top Navy Banner */
     .top-nav {
         background-color: var(--kvs-navy);
-        padding: 10px 50px;
+        padding: 12px 60px;
         display: flex;
         justify-content: space-between;
         color: white;
         font-weight: 600;
-        border-bottom: 4px solid var(--kvs-gold);
+        font-size: 0.9rem;
+        border-bottom: 5px solid var(--kvs-gold);
     }
 
-    /* Hero Branding Section */
-    .hero-brand {
-        padding: 40px 10% 20px 10%;
+    /* Corporate Header */
+    .header-section {
+        padding: 50px 10%;
         background-color: white;
+        border-bottom: 1px solid #eeeeee;
     }
 
     .name-title {
-        font-size: 42px;
+        font-size: 48px;
         font-weight: 800;
         color: var(--kvs-navy);
-        text-transform: uppercase;
         margin-bottom: 0px;
+        letter-spacing: -1px;
     }
 
     .sub-title {
         color: var(--kvs-gold);
-        font-size: 18px;
-        letter-spacing: 2px;
+        font-size: 20px;
         font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 3px;
         margin-top: -5px;
     }
 
-    /* Destination/Service Blocks (The KVS Look) */
-    .service-block {
-        border: 1px solid #eeeeee;
-        padding: 30px;
-        background-color: #fdfdfd;
-        border-top: 5px solid var(--kvs-navy);
+    /* Service-Style Content Blocks */
+    .kvs-card {
+        border: 1px solid #e5e7eb;
+        padding: 35px;
+        background-color: var(--kvs-light-bg);
+        border-top: 6px solid var(--kvs-navy);
         height: 100%;
+        transition: all 0.3s ease;
     }
 
-    .service-block:hover {
-        border-top: 5px solid var(--kvs-gold);
-        box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    .kvs-card:hover {
+        border-top: 6px solid var(--kvs-gold);
+        box-shadow: 0 15px 30px rgba(0,0,0,0.08);
     }
 
-    .block-header {
+    .card-header {
         color: var(--kvs-navy);
-        font-size: 22px;
+        font-size: 24px;
         font-weight: 700;
-        margin-bottom: 15px;
+        margin-bottom: 20px;
+        text-transform: uppercase;
     }
 
-    /* CTA Section */
-    .cta-strip {
-        background-color: var(--kvs-navy);
-        color: white;
-        padding: 40px;
-        text-align: center;
-        margin-top: 50px;
-    }
-
-    /* Typography */
-    h2 { color: var(--kvs-navy) !important; font-weight: 700 !important; }
-    p { color: #555555; line-height: 1.8; }
+    /* Typography Polish */
+    p, li { color: #4b5563; line-height: 1.8; font-size: 1.05rem; }
+    h2 { color: var(--kvs-navy) !important; font-weight: 800 !important; border-left: 5px solid var(--kvs-gold); padding-left: 15px; }
 
     /* Buttons */
     .stButton>button {
-        background-color: var(--kvs-gold) !important;
+        background-color: var(--kvs-navy) !important;
         color: white !important;
-        border: none !important;
         border-radius: 0px !important;
-        padding: 10px 30px !important;
+        border: none !important;
+        padding: 15px 40px !important;
+        font-weight: 700 !important;
+    }
+    
+    .stButton>button:hover {
+        background-color: var(--kvs-gold) !important;
     }
 
     /* Hide Streamlit elements */
@@ -96,81 +96,108 @@ st.markdown("""
     </style>
     """, unsafe_allow_html=True)
 
-# --- HEADER SIMULATION ---
+# --- TOP CONTACT BAR ---
 st.markdown("""
     <div class="top-nav">
-        <div>YASH RAI SHARMA</div>
-        <div>GROWTH • ENGINEERING • SOFTWARE</div>
+        <div>📞 +91 95501 16685</div>
+        <div>📧 yashraisharma01@gmail.com</div>
+        <div style="letter-spacing: 1px;">GITHUB • LINKEDIN</div>
     </div>
     """, unsafe_allow_html=True)
 
-# --- HERO BRANDING ---
+# --- CORPORATE BRANDING ---
 st.markdown("""
-    <div class="hero-brand">
+    <div class="header-section">
         <div class="name-title">YASH RAI SHARMA</div>
-        <div class="sub-title">SENIOR GROWTH CONTENT ENGINEER</div>
+        <div class="sub-title">Technocrat & Software Engineer</div>
     </div>
     """, unsafe_allow_html=True)
 
-# --- MAIN PROFILE BODY ---
-container = st.container()
-with container:
-    col1, col2 = st.columns([2, 1], gap="large")
-    
-    with col1:
-        st.header("Professional Overview")
+# --- PROFESSIONAL SUMMARY ---
+with st.container():
+    col_a, col_b = st.columns([2.5, 1], gap="large")
+    with col_a:
+        st.header("Executive Summary")
         st.write("""
-            Based in **Hyderabad**, I am a high-impact Growth Engineer with a solid foundation in **Software Engineering**. 
-            My expertise lies in the intersection of technical infrastructure and marketing velocity.
+            Technocrat with deep technical bases in **Software Development, Quantum Computing, Augmented/Virtual Reality, and Cyber Security**. 
+            I am a B.Tech Computer Science graduate from **SRM Institute of Science and Technology** with a 8.5 CGPA.
         """)
         st.write("""
-            Currently, as an **Assistant Growth Manager at Apollo 247**, I manage mission-critical 
-            marketing automation and data synchronization projects that drive user retention and acquisition at scale.
+            With leadership experience as a **Director at VechTech Consulting** and as a **Core-Quantum Lead**, I am driven to deliver 
+            impactful technological solutions[cite: 1].
         """)
-        
-    with col2:
-        st.header("Quick Contact")
-        st.write("📞 Request Callback")
-        st.write("📧 your.email@example.com")
-        st.button("BOOK CONSULTATION")
+    with col_b:
+        st.markdown("<br>", unsafe_allow_html=True)
+        st.button("DOWNLOAD CV")
+        st.button("REQUEST CALLBACK")
 
 st.markdown("<br><br>", unsafe_allow_html=True)
 
-# --- THE "KVS STYLE" GRID ---
-st.header("Areas of Specialization")
-grid_col1, grid_col2, grid_col3 = st.columns(3)
+# --- CORE EXPERTISE GRID (KVS STYLE) ---
+st.header("Expertise & Specializations")
+g1, g2, g3 = st.columns(3)
 
-with grid_col1:
+with g1:
     st.markdown("""
-        <div class="service-block">
-            <div class="block-header">ENGINEERING</div>
-            <p>Advanced Python automation and Google Apps Script workflows. 
-            Specializing in complex API syncs for 48,000+ user databases.</p>
+        <div class="kvs-card">
+            <div class="card-header">SOFTWARE ENG.</div>
+            <p>Specialized in <b>Python3, C++, React JS, and JavaScript</b>[cite: 1]. Experienced in developing speech recognition software and ERP solutions[cite: 1].</p>
         </div>
     """, unsafe_allow_html=True)
 
-with grid_col2:
+with g2:
     st.markdown("""
-        <div class="service-block">
-            <div class="block-header">GROWTH STRATEGY</div>
-            <p>Lifecycle marketing via CleverTap and Segment. 
-            Optimizing triggers across WhatsApp, SMS, and Push notifications.</p>
+        <div class="kvs-card">
+            <div class="card-header">CYBER SECURITY</div>
+            <p>Hands-on experience in <b>Offensive Security</b> and handling government tenders for <b>Security Operations Centers (SOCs)</b>[cite: 1].</p>
         </div>
     """, unsafe_allow_html=True)
 
-with grid_col3:
+with g3:
     st.markdown("""
-        <div class="service-block">
-            <div class="block-header">AI INTEGRATION</div>
-            <p>Leveraging Flash 3 models for precision content engineering 
-            and automated marketing experiment generation.</p>
+        <div class="kvs-card">
+            <div class="card-header">EMERGING TECH</div>
+            <p>Pioneering research in <b>Quantum Computing</b> and developing <b>VR/AR Navigation Systems</b> using Unity and Blender[cite: 1].</p>
         </div>
     """, unsafe_allow_html=True)
 
-# --- FOOTER CTA ---
+st.markdown("<br><br>", unsafe_allow_html=True)
+
+# --- WORK HISTORY SECTION ---
+st.header("Professional Experience")
+tab1, tab2, tab3 = st.tabs(["Leadership", "Engineering", "Research"])
+
+with tab1:
+    st.subheader("Director | VechTech Consulting Private Limited")
+    st.caption("Apr 2023 - Present[cite: 1]")
+    st.write("""
+    - Managed company operations and organizational dynamics[cite: 1].
+    - Led technical projects involving speech recognition and ERP implementation[cite: 1].
+    - Managed a freelance team to successfully deliver over 6 web development projects[cite: 1].
+    """)
+
+with tab2:
+    st.subheader("Application Development Intern | HappiApps")
+    st.write("- Focused on **UI/UX and Front-end Engineering** in a collaborative environment[cite: 1].")
+    st.subheader("Cyber Security Intern | Allvy Software Solutions")
+    st.write("- Involved in establishing **Cyber Network Operations Centers (C-NOCs)**[cite: 1].")
+
+with tab3:
+    st.subheader("Core-Quantum Lead | Quantum Computing Lab SRM")
+    st.write("- Led a dynamic team of 50+ members driving innovative research and strategic partnerships[cite: 1].")
+
+# --- ACHIEVEMENTS & AWARDS ---
+st.markdown("<br><br>", unsafe_allow_html=True)
+st.header("Recognition")
+st.success("**Excellence Award for Entrepreneurship, Management, and Startups** (SRM, May 2024)[cite: 1]")
+
+# --- FOOTER ---
 st.markdown("""
-    <div class="cta-strip">
-        <h2>Let's Scale Your Growth Engine</h2>
-        <p>Available for technical consulting and growth strategy audits.</p>
+    <div style="background-color: #1a365d; color: white; padding: 60px; text-align: center; margin-top: 100px;">
+        <h2 style="color: white !important; border:none;">Let's Build the Future Together</h2>
+        <p style="color: #cbd5e1;">Available for global opportunities in Emerging Tech & Leadership.</p>
+        <div style="margin-top:20px;">
+            <span style="margin: 0 15px;">GITHUB</span> | <span style="margin: 0 15px;">LINKEDIN</span>
+        </div>
     </div>
     """, unsafe_allow_html=True)
