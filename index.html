@@ -226,10 +226,11 @@
             }, 1500);
 
             // Trigger Ocean Wave Sound
-            const audio = new Audio('https://www.soundjay.com/nature/ocean-wave-1.mp3');
-            audio.loop = true;
-            audio.volume = 0.5; // Smooth volume
-            audio.play().catch(e => console.log("Audio started"));
+// Trigger Deep Ocean Wave Sound (Google Premium Library)
+const audio = new Audio('https://actions.google.com/sounds/v1/water/ocean_waves_crashing.ogg');
+audio.loop = true;
+audio.volume = 0.4; 
+audio.play().catch(e => console.error("Audio blocked by browser:", e));
         }
 
         /* --- AGGRESSIVE 3D SCROLL PHYSICS --- */
